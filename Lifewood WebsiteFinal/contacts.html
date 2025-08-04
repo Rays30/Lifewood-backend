@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages - Lifewood Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- EmailJS SDK is not strictly needed here if reply is via mailto, but harmless -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Replace "ah4oIE440AM0t21ja" with your actual EmailJS Public Key
+        (function() {
+            emailjs.init("ah4oIE440AM0t21ja");
+        })();
+    </script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">AD</div>
+                <h3>Admin Dashboard</h3>
+                <p>admin@lifewood.com</p>
+            </div>
+            <ul class="sidebar-nav-list">
+                <li><a href="dashboard.html"><img src="assets/images/home.png" alt="Home Icon" class="sidebar-icon" loading="lazy">Home</a></li>
+                <li><a href="jobapplicants.html"><img src="assets/images/applicants.png" alt="Job Applicants Icon" class="sidebar-icon" loading="lazy">Job Applicants</a></li>
+                <li><a href="managejobs.html" id="navManageJobs"><img src="assets/images/briefcase.png" alt="Manage Jobs Icon" class="sidebar-icon" loading="lazy">Manage Jobs</a></li>
+                <li><a href="contacts.html" class="active"><img src="assets/images/mail_icon.png" alt="Contacts Icon" class="sidebar-icon" loading="lazy">Contacts</a></li>
+            </ul>
+            <button id="logoutButton" class="btn btn-secondary">Logout</button>
+        </nav>
+
+        <div class="main-dashboard-content">
+            <header class="dashboard-header">
+                <h1 class="headline-01" id="currentSectionTitle">Contact Messages</h1>
+                <button class="refresh-button" onclick="location.reload()">🔄 Refresh</button>
+            </header>
+
+            <!-- Filters for Contact Messages -->
+            <div class="dashboard-filter-bar">
+                <label for="contactFilter">Filter by Status:</label>
+                <select id="contactFilter">
+                    <option value="All">All</option>
+                    <option value="New">New</option>
+                    <option value="Replied">Replied</option>
+                    <option value="Ignored">Ignored</option>
+                </select>
+                <label for="categoryFilter">Filter by Category:</label>
+                <select id="categoryFilter">
+                    <option value="All">All Categories</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Job Inquiry">Job Inquiry</option>
+                    <option value="Technical Issue">Technical Issue</option>
+                    <option value="Partnership">Partnership</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="contactSearchBar" placeholder="Search by name, email, or subject...">
+                <!-- NEW: Show Ignored Messages Toggle -->
+                <label for="showIgnoredToggle">
+                    <input type="checkbox" id="showIgnoredToggle"> Show Ignored Messages
+                </label>
+            </div>
+
+            <!-- Contact Messages Section -->
+            <section id="contactMessagesSection" class="dashboard-section">
+                <h2 class="headline-02">Manage Messages</h2>
+                <div class="dashboard-table-container">
+                    <table id="contactMessagesTable" class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Contact messages will be loaded here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="toastMessage" class="toast-message"></div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- NEW: Simulated Reply Modal Structure -->
+    <div id="replyModal" class="modal-overlay">
+        <div class="modal-content-wrapper contact-reply-modal-content">
+            <button class="modal-close-button">×</button>
+            <h3>Reply to Message</h3>
+            <div class="modal-info-section">
+                <div class="modal-info-grid">
+                    <div class="modal-info-item full-width">
+                        <span class="modal-info-label">Original Subject:</span>
+                        <p id="originalSubject"></p>
+                    </div>
+                    <div class="modal-info-item full-width">
+                        <span class="modal-info-label">Original Message:</span>
+                        <p id="originalMessage"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <h4 style="margin-top: var(--spacing-md); color: var(--text-primary);">Reply History:</h4>
+            <div id="replyHistory" class="reply-history">
+                <p class="text-center text-secondary">No replies yet.</p>
+                <!-- Reply history items will be loaded here -->
+            </div>
+
+            <form id="replyForm" class="contact-form" style="margin-top: var(--spacing-lg);">
+                <div class="form-group">
+                    <label for="replyToEmail">Recipient Email</label>
+                    <input type="email" id="replyToEmail" name="replyToEmail" class="read-only-field" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="replySubject">Your Subject</label>
+                    <input type="text" id="replySubject" name="replySubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="replyMessage">Your Message</label>
+                    <textarea id="replyMessage" name="replyMessage" rows="8" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Reply</button>
+                <div id="replyMessageStatus" class="form-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (v10+) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script> 
+
+    <!-- Custom Firebase Config -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <!-- Contacts Specific Script -->
+    <script type="module" src="assets/js/contacts.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+</body>
+</html>

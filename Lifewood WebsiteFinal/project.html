@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - Lifewood</title>
+<meta name="description" content="Explore Lifewood's impactful projects in sustainable construction, renewable energy, smart cities, and advanced material development.">
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- GLightbox CSS removed as it's replaced by custom modal -->
+</head>
+<body>
+<div id="progressBar"></div>
+<div class="nav-overlay"></div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+<div class="spinner"></div>
+</div>
+<header class="main-header">
+    <div class="container">
+        <a href="index.html" class="logo">
+            <img src="assets/images/lifewood_logo.png" alt="Lifewood Company Logo" class="logo-image header-logo" loading="lazy">
+        </a>
+        <nav class="main-nav">
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="project.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" aria-label="Toggle dark and light mode" class="theme-toggle">
+            <span class="icon-light">☀️</span>
+            <span class="icon-dark">🌙</span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <section class="page-hero projects-hero">
+        <!-- Video Background Container -->
+        <div class="video-background-wrapper">
+            <video autoplay loop muted playsinline class="video-background">
+                <source src="assets/images/project_hero_section.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-urban-city-sunset-3096-large.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="page-hero-content container" data-aos="fade-up">
+            <h1>Our Visionary Projects.</h1>
+            <p>Showcasing our commitment to innovative and sustainable solutions across various industries.</p>
+        </div>
+    </section>
+
+    <section class="section-spacing container">
+        <h2 class="text-center headline-01" data-aos="fade-up">Explore Our Impactful Creations</h2>
+        <p class="subtitle-example text-center" data-aos="fade-up" data-aos-delay="100">From smart infrastructure to green energy, see how we're building a better future.</p>
+
+        <div class="projects-grid">
+            <!-- Project Card 1 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="0"
+                data-title="Eco-Smart Urban Farms"
+                data-image="assets/images/project_grid1.png"
+                data-description="Developed intelligent vertical farms integrated with AI for optimal resource management and crop yield in metropolitan areas."
+                data-full-description="These farms leverage cutting-edge technology to create controlled environments, maximizing food production while minimizing water and land use. Our AI systems monitor plant health, nutrient levels, and growth patterns, ensuring sustainable and efficient operations. This project showcases our commitment to sustainable urban development and food security."
+                data-tools="AI, IoT, Hydroponics, Renewable Energy Integration, Data Analytics"
+                data-date="Completed: Q3 2023"
+                data-role="Lead System Architect"
+                data-github-link="https://github.com/lifewood/eco-smart-farms"
+                data-demo-link="https://demo.lifewood.com/urban-farms">
+                <img src="assets/images/project_grid1.png" alt="Urban Vertical Farm with AI Monitoring" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>Eco-Smart Urban Farms</h3>
+                    <p>Developed intelligent vertical farms integrated with AI for optimal resource management and crop yield in metropolitan areas.</p>
+                    <span class="project-tag">AI & Agriculture</span>
+                </div>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="100"
+                data-title="Community Energy Hubs"
+                data-image="assets/images/project_grid2.jpg"
+                data-description="Designed and implemented self-sufficient energy grids for rural communities using solar and wind power integration."
+                data-full-description="These hubs provide reliable, clean energy, reducing reliance on fossil fuels and promoting energy independence for remote areas. The project involved grid stabilization technologies, smart metering solutions, and community training programs to manage and maintain the systems. It significantly improved living standards and economic opportunities in underserved regions."
+                data-tools="Solar PV, Wind Turbines, Grid Storage, Smart Metering, Community Engagement Software"
+                data-date="Completed: Q1 2022"
+                data-role="Energy Systems Engineer"
+                data-github-link=""
+                data-demo-link="https://demo.lifewood.com/energy-hubs">
+                <img src="assets/images/project_grid2.jpg" alt="Renewable Energy Community Hub" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>Community Energy Hubs</h3>
+                    <p>Designed and implemented self-sufficient energy grids for rural communities using solar and wind power integration.</p>
+                    <span class="project-tag">Renewable Energy</span>
+                </div>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="200"
+                data-title="Next-Gen Biocomposites"
+                data-image="assets/images/project_grid3.jpg"
+                data-description="Pioneering the development of sustainable, high-strength biocomposite materials for various industrial applications."
+                data-full-description="Pioneering the development of sustainable, high-strength biocomposite materials for various industrial applications. These materials offer a greener alternative to traditional composites, with comparable or superior performance, reduced weight, and improved environmental footprint. Our research focuses on bio-based resins and natural fibers, aiming for applications in construction, automotive, and consumer goods. This innovation contributes to a circular economy by utilizing renewable resources and enabling easier recycling."
+                data-tools="Biopolymer Synthesis, Natural Fiber Composites, Material Testing, Additive Manufacturing"
+                data-date="Ongoing R&D: Est. Q4 2024"
+                data-role="Material Scientist Lead"
+                data-github-link="https://github.com/lifewood/biocomposites-research"
+                data-demo-link="">
+                <img src="assets/images/project_grid3.jpg" alt="Biocomposite Material Development" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>Next-Gen Biocomposites</h3>
+                    <p>Pioneering the development of sustainable, high-strength biocomposite materials for various industrial applications.</p>
+                    <span class="project-tag">Material Science</span>
+                </div>
+            </article>
+
+            <!-- Project Card 4 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="0"
+                data-title="LEED Platinum Office"
+                data-image="assets/images/project_grid4.jpg"
+                data-description="Constructed a cutting-edge office building achieving LEED Platinum certification through integrated sustainable design."
+                data-full-description="Constructed a cutting-edge office building achieving LEED Platinum certification through integrated sustainable design. This project exemplifies peak environmental performance, resource efficiency, and occupant well-being in commercial architecture. Features include a high-performance facade, rainwater harvesting, greywater recycling, rooftop solar array, smart HVAC systems, and extensive use of local, recycled, and low-VOC materials. It sets a new benchmark for green corporate spaces."
+                data-tools="LEED Certification, Building Information Modeling (BIM), Smart HVAC, Water Recycling Systems"
+                data-date="Completed: Q2 2023"
+                data-role="Green Building Consultant"
+                data-github-link=""
+                data-demo-link="">
+                <img src="assets/images/project_grid4.jpg" alt="Certified Green Office Building" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>LEED Platinum Office</h3>
+                    <p>Constructed a cutting-edge office building achieving LEED Platinum certification through integrated sustainable design.</p>
+                    <span class="project-tag">Green Building</span>
+                </div>
+            </article>
+
+            <!-- Project Card 5 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="100"
+                data-title="Smart Water Management"
+                data-image="assets/images/project_grid5.jpg"
+                data-description="Implemented an IoT-based system for urban water conservation, real-time leakage detection, and efficient distribution."
+                data-full-description="Implemented an IoT-based system for urban water conservation, real-time leakage detection, and efficient distribution. This smart infrastructure solution significantly reduces water waste and ensures sustainable water supply for growing urban populations. The system utilizes network sensors, predictive analytics, and automated control valves to identify and resolve issues promptly. It also integrates with public dashboards to promote water awareness and conservation among citizens."
+                data-tools="IoT Sensors, Data Analytics, Predictive Modeling, SCADA Systems, GIS Mapping"
+                data-date="Launched: Q4 2022"
+                data-role="IoT Solutions Architect"
+                data-github-link=""
+                data-demo-link="https://demo.lifewood.com/water-management">
+                <img src="assets/images/project_grid5.jpg" alt="Advanced Water Management System" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>Smart Water Management</h3>
+                    <p>Implemented an IoT-based system for urban water conservation, real-time leakage detection, and efficient distribution.</p>
+                    <span class="project-tag">Smart Cities</span>
+                </div>
+            </article>
+
+            <!-- Project Card 6 -->
+            <article class="project-card" data-aos="zoom-in" data-aos-delay="200"
+                data-title="Circular Economy Initiative"
+                data-image="assets/images/project_grid6.avif"
+                data-description="Developed a pilot facility for converting industrial waste into valuable resources, promoting a closed-loop economy."
+                data-full-description="Developed a pilot facility for converting industrial waste into valuable resources, promoting a closed-loop economy. This project aims to minimize landfill waste and maximize resource utilization by transforming waste streams into new products or energy. The facility employs advanced recycling techniques, waste-to-energy conversion, and material recovery processes. It serves as a model for industrial symbiosis, fostering collaboration between industries to reduce their collective environmental impact."
+                data-tools="Waste-to-Energy, Advanced Recycling, Material Recovery, Industrial Symbiosis Planning"
+                data-date="Pilot Phase: Q2 2024"
+                data-role="Circular Economy Strategist"
+                data-github-link="https://github.com/lifewood/circular-economy-pilot"
+                data-demo-link="">
+                <img src="assets/images/project_grid6.avif" alt="Circular Economy Waste Processing Plant" class="project-thumbnail" loading="lazy">
+                <div class="project-content">
+                    <h3>Circular Economy Initiative</h3>
+                    <p>Developed a pilot facility for converting industrial waste into valuable resources, promoting a closed-loop economy.</p>
+                    <span class="project-tag">Waste Management</span>
+                </div>
+            </article>
+        </div>
+
+        <div class="text-center" data-aos="fade-up">
+            <a href="contact.html" class="btn btn-primary">Contact Us to Discover More Projects</a>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-col footer-about">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.svg" alt="Lifewood Company Logo" class="logo-image footer-logo" loading="lazy">
+            </a>
+            <p>Innovating for a sustainable tomorrow, one solution at a time. Always on, never off.</p>
+        </div>
+        <div class="footer-col footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="project.html">Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-contact">
+            <h3>Contact Us</h3>
+            <p><img src="assets/images/address_icon.png" alt="Address icon" class="social-icon" loading="lazy">Location: 88 GreenTech Avenue, Innovation Park, London, EC1A 1AB, UK</p>
+            <p><img src="assets/images/mail_icon.png" alt="Email icon" class="social-icon" loading="lazy"> Email: <a href="mailto:info@lifewood.com">info@lifewood.com</a></p>
+            <p><img src="assets/images/phone_icon.png" alt="Phone icon" class="social-icon" loading="lazy"> Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+        </div>
+        <div class="footer-col footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.lifewood.com/" aria-label="Lifewood Website"><img src="assets/images/web_icon.png" alt="Website Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.youtube.com/@LifewoodDataTechnology/videos" aria-label="YouTube"><img src="assets/images/youtube_icon.png" alt="YouTube Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.linkedin.com/company/lifewood-data-technology-ltd." aria-label="LinkedIn"><img src="assets/images/linkedin_icon.png" alt="LinkedIn Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.facebook.com/LifewoodPH" aria-label="Facebook"><img src="assets/images/fb_icon.png" alt="Facebook Icon" class="social-icon" loading="lazy"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>© <span id="current-year-footer"></span> Lifewood. All rights reserved.</p>
+        <!-- ADDED: Hidden link to Admin Login. Visually invisible but clickable. -->
+        <a href="admin-login.html" id="admin-secret-link" aria-label="Admin Login"></a>
+    </div>
+</footer>
+
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    ↑
+</button>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- GLightbox JS removed as it's replaced by custom modal -->
+<script src="assets/js/script.js"></script>
+<script type="module" src="assets/js/utils.js"></script>
+<!-- ADDED: Toast Message Element -->
+<div id="toastMessage" class="toast-message"></div>
+</body>
+</html>

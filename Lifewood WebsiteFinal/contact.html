@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Lifewood</title>
+<meta name="description" content="Contact Lifewood for inquiries, collaborations, and expert sustainable solutions. Reach out via phone, email, or our online form.">
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<div id="progressBar"></div>
+<div class="nav-overlay"></div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+<div class="spinner"></div>
+</div>
+<header class="main-header">
+<div class="container">
+<a href="index.html" class="logo">
+<img src="assets/images/lifewood_logo.png" alt="Lifewood Company Logo" class="logo-image header-logo" loading="lazy">
+</a>
+<nav class="main-nav">
+<button class="nav-toggle" aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<ul class="nav-list">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html">Services</a></li>
+<li><a href="project.html">Projects</a></li>
+<li><a href="contact.html" class="active">Contact Us</a></li>
+</ul>
+</nav>
+<button id="theme-toggle" aria-label="Toggle dark and light mode" class="theme-toggle">
+<span class="icon-light">☀️</span>
+<span class="icon-dark">🌙</span>
+</button>
+</div>
+</header>
+<main>
+    <section class="page-hero contact-hero">
+        <!-- No video background for contact page hero, using background-image from CSS -->
+        <div class="page-hero-content container" data-aos="fade-up">
+            <h1>Let's Connect and Collaborate.</h1>
+            <p>Your vision, our expertise. Reach out to the Lifewood team today.</p>
+        </div>
+    </section>
+
+    <section class="section-spacing container contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+            <h2 class="headline-01">Get in Touch</h2>
+            <p class="subtitle-example">We're here to answer your questions and explore innovative solutions together.</p>
+
+            <div class="info-item">
+                <img src="assets/images/phone_icon.png" alt="Phone Icon" class="contact-icon icon-phone" loading="lazy">
+                <div>
+                    <h4>Phone</h4>
+                    <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="assets/images/mail_icon.png" alt="Email Icon" class="contact-icon icon-email" loading="lazy">
+                <div>
+                    <h4>Email</h4>
+                    <p><a href="mailto:info@lifewood.com">info@lifewood.com</a></p>
+                </div>
+            </div>
+            <div class="info-item">
+                <img src="assets/images/address_icon.png" alt="Address Icon" class="contact-icon icon-address" loading="lazy">
+                <div>
+                    <h4>Address</h4>
+                    <p>88 GreenTech Avenue, Innovation Park, London, EC1A 1AB, UK</p>
+                </div>
+            </div>
+
+            <div class="social-contact">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <!-- Using new contact-social-icon class for black icons here -->
+                    <a href="https://www.lifewood.com/" aria-label="Lifewood Website"><img src="assets/images/web_icon.png" alt="Website Icon" class="contact-social-icon" loading="lazy"></a>
+                    <a href="https://www.youtube.com/@LifewoodDataTechnology/videos" aria-label="YouTube"><img src="assets/images/youtube_icon.png" alt="YouTube Icon" class="contact-social-icon" loading="lazy"></a>
+                    <a href="https://www.linkedin.com/company/lifewood-data-technology-ltd." aria-label="LinkedIn"><img src="assets/images/linkedin_icon.png" alt="LinkedIn Icon" class="contact-social-icon" loading="lazy"></a>
+                    <a href="https://www.facebook.com/LifewoodPH" aria-label="Facebook"><img src="assets/images/fb_icon.png" alt="Facebook Icon" class="contact-social-icon" loading="lazy"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-container bg-paper" data-aos="fade-left">
+            <h3 class="headline-02">Send Us a Message</h3>
+            <form id="contactForm" class="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject">
+                </div>
+                <!-- New: Category for the message -->
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Job Inquiry">Job Inquiry</option>
+                        <option value="Technical Issue">Technical Issue</option>
+                        <option value="Partnership">Partnership</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                <div id="formMessage" class="form-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="map-section section-spacing" data-aos="fade-up">
+        <h2 class="text-center headline-01">Our Location</h2>
+        <p class="subtitle-example text-center">Find us at the heart of innovation.</p>
+        <div class="map-placeholder">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.67890!2d-0.1278!3d51.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761b2b8004f12f%3A0x280e22b9b8b8b8b8!2sLondon!5e0!3m2!1sen!2suk!4v1678901234567!5m2!1sen!2suk" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-col footer-about">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.svg" alt="Lifewood Company Logo" class="logo-image footer-logo" loading="lazy">
+            </a>
+            <p>Innovating for a sustainable tomorrow, one solution at a time. Always on, never off.</p>
+        </div>
+        <div class="footer-col footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="project.html">Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-contact">
+            <h3>Contact Us</h3>
+            <p><img src="assets/images/address_icon.png" alt="Address icon" class="social-icon" loading="lazy">Location: 88 GreenTech Avenue, Innovation Park, London, EC1A 1AB, UK</p>
+            <p><img src="assets/images/mail_icon.png" alt="Email icon" class="social-icon" loading="lazy"> Email: <a href="mailto:info@lifewood.com">info@lifewood.com</a></p>
+            <p><img src="assets/images/phone_icon.png" alt="Phone icon" class="social-icon" loading="lazy"> Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+        </div>
+        <div class="footer-col footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.lifewood.com/" aria-label="Lifewood Website"><img src="assets/images/web_icon.png" alt="Website Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.youtube.com/@LifewoodDataTechnology/videos" aria-label="YouTube"><img src="assets/images/youtube_icon.png" alt="YouTube Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.linkedin.com/company/lifewood-data-technology-ltd." aria-label="LinkedIn"><img src="assets/images/linkedin_icon.png" alt="LinkedIn Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.facebook.com/LifewoodPH" aria-label="Facebook"><img src="assets/images/fb_icon.png" alt="Facebook Icon" class="social-icon" loading="lazy"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>© <span id="current-year-footer"></span> Lifewood. All rights reserved.</p>
+        <!-- ADDED: Hidden link to Admin Login. Visually invisible but clickable. -->
+        <a href="admin-login.html" id="admin-secret-link" aria-label="Admin Login"></a>
+    </div>
+</footer>
+
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    ↑
+</button>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Firebase SDK (v10+) -->
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+<!-- Custom Firebase Config -->
+<script type="module" src="assets/js/firebase-config.js"></script>
+<script src="assets/js/script.js"></script>
+<script type="module" src="assets/js/contact.js"></script>
+<script type="module" src="assets/js/utils.js"></script> <!-- Ensure this is included -->
+<!-- ADDED: Toast Message Element -->
+<div id="toastMessage" class="toast-message"></div>
+</body>
+</html>

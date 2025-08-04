@@ -1,0 +1,2651 @@
+/*
+    Lifewood - Custom Style Sheet
+    Inspired by Lifewood Brand Guidelines (Colors, Typography, Professional Aesthetic)
+    Original Design & Content by AI-Assisted Development
+*/
+
+/* --- 0. CSS Reset & Global Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Color Palette (from Lifewood Brand Guidelines) */
+    --color-paper: #f5eedb; /* Light beige/cream */
+    --color-white: #ffffff;
+    --color-sea-salt: #F9F7F7; /* Off-white */
+    --color-dark-serpent: #133020; /* Very dark green/almost black */
+    --color-castleton-green: #046241; /* Deep forest green */
+    --color-saffaron: #FFB347; /* Bright orange - accent */
+    --color-earth-yellow: #FFC370; /* Lighter orange/yellow */
+
+    /* Typography (Manrope from Brand Guidelines) */
+    --font-manrope: 'Manrope', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+
+    /* Borders & Shadows */
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --box-shadow-light: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --box-shadow-medium: 0 8px 16px rgba(0, 0, 0, 0.1);
+
+    /* Light Mode Color Variables (Default) */
+    --bg-primary: var(--color-sea-salt);
+    --bg-secondary: var(--color-paper);
+    --text-primary: var(--color-dark-serpent);
+    --text-secondary: rgba(var(--color-dark-serpent), 0.8);
+    --link-color: var(--color-dark-serpent);
+    --header-bg: var(--color-white);
+    --footer-bg: var(--color-dark-serpent);
+    --card-bg: var(--color-white);
+    --border-color: #ccc;
+    --shadow-base-color: rgba(0, 0, 0, 0.05);
+    --shadow-medium-color: rgba(0, 0, 0, 0.1);
+
+    /* Dashboard Action Button Colors (Fixed, not affected by theme toggle, based on common UX) */
+    --dashboard-success-color: #48BB78; /* Green for accept */
+    --dashboard-danger-color: #E53E3E;  /* Red for reject/delete */
+    --dashboard-info-color: #4299E1;   /* Blue for reply */
+    --dashboard-warning-color: #FFC107; /* Orange for ignore */
+    --dashboard-accent-text-color: #333; /* Dark text for light warning/saffaron backgrounds */
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --bg-primary: #1a1a2e; /* Dark background */
+    --bg-secondary: #2c2c4d; /* Slightly lighter dark background for sections */
+    --text-primary: #e0e0e0; /* Light text */
+    --text-secondary: #b0b0b0; /* Lighter grey text */
+    --link-color: var(--color-saffaron);
+    --header-bg: #2c2c4d; /* Darker header */
+    --footer-bg: #1a1a2e; /* Darker footer */
+    --card-bg: #3e3e5c; /* Darker cards */
+    --border-color: #555;
+    --shadow-base-color: rgba(0, 0, 0, 0.3);
+    --shadow-medium-color: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    font-family: var(--font-manrope);
+    line-height: 1.6;
+    color: var(--text-primary); /* Use variable */
+    background-color: var(--bg-primary); /* Use variable */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+}
+
+/* New: Overlay for mobile navigation */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent */
+    z-index: 998; /* Below mobile nav, above main content */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.nav-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* New: Prevent body scroll when mobile nav is open */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh; /* Prevents scroll bounce on iOS */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section-spacing {
+    padding: var(--spacing-xl) 0;
+}
+
+img.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Scroll Progress Bar */
+#progressBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%; /* Will be controlled by JS */
+    height: 5px; /* Adjust height as needed */
+    background-color: var(--color-saffaron);
+    z-index: 10000; /* Ensure it's on top */
+    transition: background-color 0.3s ease; /* For theme change */
+}
+
+
+/* --- 1. Typography Styles --- */
+h1, .headline-01 {
+    font-family: var(--font-manrope);
+    font-weight: 600; /* Semibold */
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary); /* Use variable */
+    letter-spacing: -0.02em;
+    transition: color 0.3s ease;
+}
+
+h2, .headline-02 {
+    font-family: var(--font-manrope);
+    font-weight: 500; /* Medium */
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.3;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary); /* Use variable */
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+}
+
+h3 {
+    font-family: var(--font-manrope);
+    font-weight: 500; /* Medium */
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary); /* Use variable */
+    letter-spacing: -0.005em;
+    transition: color 0.3s ease;
+}
+
+h4 {
+    font-family: var(--font-manrope);
+    font-weight: 600;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.4;
+    color: var(--text-primary); /* Use variable */
+    transition: color 0.3s ease;
+}
+
+p, ul, ol, address {
+    font-family: var(--font-manrope);
+    font-weight: 400; /* Regular */
+    font-size: clamp(1rem, 1.5vw, 1.125rem); /* Body size */
+    line-height: 1.7;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary); /* Use variable */
+    letter-spacing: 0.01em;
+    transition: color 0.3s ease;
+}
+
+.subtitle-example {
+    font-family: var(--font-manrope);
+    font-weight: 500; /* Medium */
+    font-size: clamp(1.1rem, 1.8vw, 1.3rem);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-secondary); /* Use variable */
+    transition: color 0.3s ease;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-white {
+    color: var(--color-white) !important;
+}
+
+.text-dark-serpent {
+    color: var(--text-primary) !important; /* Adjust for dark mode if needed, otherwise this is fine */
+}
+
+/* --- 2. Color Palette & Backgrounds --- */
+.bg-paper {
+    background-color: var(--bg-secondary); /* Use variable */
+    transition: background-color 0.3s ease;
+}
+
+.bg-dark-serpent {
+    background-color: var(--bg-primary); /* Use variable */
+    transition: background-color 0.3s ease;
+}
+
+.bg-saffaron {
+    background-color: var(--color-saffaron);
+}
+
+/* --- 3. Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 600; /* Semibold */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-saffaron);
+    color: var(--color-dark-serpent);
+    border-color: var(--color-saffaron);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-earth-yellow);
+    border-color: var(--color-earth-yellow);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-castleton-green);
+    border-color: var(--color-castleton-green);
+    padding: 0.7rem 1.7rem; /* Adjust for border */
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-castleton-green);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-cta {
+    background-color: var(--color-saffaron);
+    color: var(--color-dark-serpent);
+    border-color: var(--color-saffaron);
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+}
+
+.btn-cta:hover {
+    background-color: var(--color-earth-yellow);
+    border-color: var(--color-earth-yellow);
+    transform: translateY(-3px);
+}
+
+/* --- 4. Header & Navigation --- */
+.main-header {
+    background-color: var(--header-bg); /* Use variable */
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 4px 8px var(--shadow-base-color); /* Use variable */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-image.header-logo {
+    height: 30px;
+    width: auto;
+    max-width: 135px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Dark mode filter for header logo */
+body.dark-mode .logo-image.header-logo {
+    filter: brightness(0) invert(1); /* Invert dark logo to white */
+}
+
+/* Nav Menu */
+.main-nav {
+    flex-grow: 1; /* Allow nav to take available space */
+    display: flex;
+    justify-content: center; /* Center nav items on desktop */
+}
+
+.main-nav .nav-list {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.main-nav .nav-list a {
+    text-decoration: none;
+    color: var(--link-color); /* Use variable */
+    font-weight: 500; /* Medium */
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.main-nav .nav-list a:hover,
+.main-nav .nav-list a.active {
+    color: var(--color-saffaron);
+}
+
+.main-nav .nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-saffaron);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-list a:hover::after,
+.main-nav .nav-list a.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; /* Ensure toggle is clickable above overlay/nav */
+}
+
+.nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary); /* Hamburger lines follow text color */
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Mobile Nav Toggle Animation */
+.nav-toggle.open span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+/* Theme Toggle Button - UPDATED */
+.theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-primary); /* Icon color follows text color, but individual spans override */
+    padding: 0.5rem;
+    position: relative; /* Essential for absolute positioning of spans */
+    width: 40px; /* Fixed width to contain icons */
+    height: 40px; /* Fixed height to contain icons */
+    display: flex; /* Use flexbox to center the icons if they weren't absolute */
+    justify-content: center;
+    align-items: center;
+    z-index: 1001; /* Above nav toggle */
+    transition: color 0.3s ease; /* For the button's base color, though icons handle visual */
+}
+
+.theme-toggle span {
+    display: inline-block;
+    position: absolute; /* Stack icons on top of each other */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* Center the span itself */
+    font-size: 1.5rem; /* Ensure icon size */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth transition for visible changes */
+    will-change: opacity, transform; /* Optimize for animation performance */
+}
+
+/* Default state: Light mode (sun visible, moon hidden) */
+.theme-toggle .icon-light {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.theme-toggle .icon-dark {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8); /* Slightly smaller when hidden */
+}
+
+/* Dark mode state: (sun hidden, moon visible) */
+body.dark-mode .theme-toggle .icon-light {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+body.dark-mode .theme-toggle .icon-dark {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/* --- 5. Footer --- */
+.main-footer {
+    background-color: var(--footer-bg); /* Use variable */
+    color: var(--color-white); /* Always white text on dark footer */
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.main-footer .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.main-footer h3 {
+    color: var(--color-white); /* Always white in footer */
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+}
+
+.main-footer ul {
+    list-style: none;
+}
+
+.main-footer ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.3s ease;
+    display: block;
+    padding: 0.2rem 0;
+}
+
+.main-footer ul li a:hover {
+    color: var(--color-saffaron);
+}
+
+.main-footer p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: var(--spacing-xs);
+}
+
+.main-footer p a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.main-footer p a:hover {
+    color: var(--color-saffaron);
+}
+
+.footer-about .logo {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Footer Logo Image - Sized for proper display and inverted for dark background */
+.logo-image.footer-logo {
+    height: 25px;
+    width: auto;
+    max-width: 110px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1); /* Makes a dark/colored logo white for the dark footer */
+    transition: filter 0.3s ease;
+}
+/* Ensure footer logo remains white even if dark mode is toggled, as footer is always dark */
+body.dark-mode .logo-image.footer-logo {
+    filter: brightness(0) invert(1);
+}
+
+
+/* General Social Icon Styles (applies to all img.social-icon elements) */
+.social-icons {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.social-icon { /* Common properties for all social/contact info icons */
+    display: block; /* Kept as block for footer-social for stacked icons */
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Specific filters and layout for icons based on their location */
+
+/* Footer Social Icons Layout & Color */
+.main-footer .social-icons {
+    flex-direction: row; /* Make social icons horizontal in footer on mobile */
+    justify-content: center; /* Center icons too */
+    gap: var(--spacing-md); /* Vertical spacing between them */
+    align-items: center; /* Align icons to the left within their column */
+}
+.main-footer .social-icons .social-icon {
+    filter: invert(1); /* Makes social icons white in the footer */
+}
+/* Ensure footer social icons remain white even if dark mode is toggled, as footer is always dark */
+body.dark-mode .main-footer .social-icons .social-icon {
+    filter: invert(1);
+}
+
+
+/* Footer Contact Info Icons Color (e.g., address, email, phone icons in footer) */
+.main-footer .footer-contact .social-icon {
+    display: inline-block; /* Change to inline-block for side-by-side with text */
+    vertical-align: middle; /* Align icon with middle of text */
+    margin-right: 0.5rem; /* Add some space between icon and text */
+    filter: invert(1); /* Makes contact info icons white in the footer */
+}
+/* Ensure footer contact icons remain white even if dark mode is toggled, as footer is always dark */
+body.dark-mode .main-footer .footer-contact .social-icon {
+    filter: invert(1);
+}
+
+/* NEW CLASS: For social icons in the main contact page content ("Follow Us" section) */
+.contact-social-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0); /* Makes these icons black in light mode */
+}
+.contact-social-icon:hover {
+    transform: scale(1.1);
+}
+/* Make contact social icons white in dark mode */
+body.dark-mode .contact-social-icon {
+    filter: invert(1);
+}
+
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    position: relative; /* ADDED for secret link positioning */
+}
+
+/* --- 6. Homepage Specific Sections --- */
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    height: 70vh; /* Responsive height */
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-dark-serpent); /* Fallback solid color if video fails */
+    color: var(--color-white);
+    overflow: hidden; /* Crucial for video to not overflow */
+}
+
+/* Video Background Wrapper (for hero section) */
+.video-background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide parts of video that extend beyond container */
+    z-index: 0; /* Ensures video stays behind content and overlay */
+}
+
+.video-background-wrapper video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the video */
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover; /* Ensures video covers the area without distortion */
+}
+
+/* Overlay for text readability over video */
+.hero-section::before,
+.page-hero::before,
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(19, 48, 32, 0.7); /* Dark Serpent color with 70% opacity for overlay */
+    z-index: 1; /* Ensure overlay is above video but below content */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above overlay */
+    max-width: 800px;
+    text-align: center; /* Explicitly centered hero content */
+    /* Added for parallax effect via JS */
+    transition: transform 0.1s ease-out; /* Smooth movement for parallax */
+}
+
+.hero-content h1 {
+    color: var(--color-white);
+    margin-bottom: var(--spacing-md);
+    font-size: clamp(3rem, 6vw, 5rem);
+}
+
+.hero-content p {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-xl);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+}
+
+/* About Overview Section (content image remains HTML) */
+.about-overview {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: center;
+    gap: var(--spacing-xl);
+}
+
+.about-content {
+    flex: 1 1 50%; /* Takes roughly half width */
+    min-width: 300px;
+}
+
+.about-text-block h3 {
+    text-align: left; /* Heading within this block is usually left-aligned */
+}
+.about-text-block p {
+    text-align: left; /* Keep paragraphs left-aligned for readability */
+}
+
+
+.about-image {
+    flex: 1 1 40%; /* Takes roughly other half */
+    min-width: 250px;
+    position: relative;
+}
+
+.about-image img {
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+    transition: box-shadow 0.3s ease;
+}
+
+/* Services Summary Section (using <img> tags directly in HTML) */
+.services-summary h2, .services-summary p {
+    margin-bottom: var(--spacing-lg);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.service-card {
+    background-color: var(--card-bg); /* Use variable */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 8px var(--shadow-base-color); /* Use variable */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    /* Removed cursor: pointer; here as it no longer opens a modal */
+}
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.01); /* More pronounced lift and slight scale */
+    box-shadow: 0 12px 24px var(--shadow-medium-color); /* Stronger shadow */
+}
+
+/* General style for service icons (homepage summary) */
+.service-icon { /* Apply common sizing and transition to the <img> tags */
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--spacing-md);
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(80%) sepia(45%) saturate(301%) hue-rotate(334deg) brightness(101%) contrast(101%); /* Saffaron color filter */
+    transition: filter 0.3s ease;
+}
+/* Make service icons white in dark mode */
+body.dark-mode .service-icon {
+    filter: invert(1);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    color: var(--color-castleton-green);
+    margin-bottom: var(--spacing-xs);
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: var(--text-primary); /* Use variable */
+}
+
+
+/* CTA Banner (background images already in CSS) */
+.cta-banner {
+    text-align: center;
+    padding: var(--spacing-xxl) var(--spacing-md);
+    /* Removed background-image, relying on video background now */
+    background-color: var(--color-dark-serpent); /* Fallback solid color if video fails */
+    position: relative;
+    overflow: hidden;
+}
+
+/* The ::before overlay rule for CTA banner is now combined with hero sections */
+/*
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(4, 98, 65, 0.7);
+    z-index: 1;
+}
+*/
+
+.cta-banner .container {
+    position: relative;
+    z-index: 2;
+}
+
+.cta-banner h2 {
+    color: var(--color-white); /* Ensures white text over dark overlay */
+    font-size: clamp(2.5rem, 4.5vw, 4rem);
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-banner p {
+    color: rgba(255, 255, 255, 0.9); /* Ensures light text over dark overlay */
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+/* ADDED: Careers CTA Section (for index.html) */
+.careers-cta {
+    background-color: var(--bg-secondary); /* Use variable */
+    padding: var(--spacing-xxl) 0;
+    transition: background-color 0.3s ease;
+}
+
+.careers-cta h2 {
+    color: var(--text-primary);
+}
+.careers-cta p {
+    color: var(--text-secondary);
+}
+
+
+/* --- 7. Page Specific Hero Sections --- */
+.page-hero {
+    height: 40vh;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    background-color: var(--color-dark-serpent); /* Fallback solid color if video/image fails */
+    position: relative;
+    overflow: hidden; /* Crucial for video to not overflow */
+}
+
+/* Video Background Wrapper (for about-hero and index-hero and services-hero) */
+/* The general .video-background-wrapper is already defined, this just ensures it applies to page heroes too */
+.page-hero .video-background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.page-hero .video-background-wrapper video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+.page-hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above overlay */
+    max-width: 900px;
+    text-align: center; /* Explicitly centered page hero content */
+    /* Added for parallax effect via JS */
+    transition: transform 0.1s ease-out; /* Smooth movement for parallax */
+}
+
+.page-hero-content h1 {
+    color: var(--color-white);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.page-hero-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+}
+
+/* --- 8. About Page Specific Styles --- */
+.about-us-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xl);
+    align-items: center;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.about-text-block h3 {
+    text-align: left; /* Heading within this block is usually left-aligned */
+}
+.about-text-block p {
+    text-align: left; /* Keep paragraphs left-aligned for readability */
+}
+
+
+.about-image-block { /* Changed from .about-image to match HTML */
+    flex: 1 1 40%;
+    min-width: 250px;
+    position: relative;
+}
+
+.about-image-block img { /* Changed from .about-image img to match HTML */
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+    transition: box-shadow 0.3s ease;
+}
+
+.about-values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.value-card {
+    background-color: var(--card-bg); /* Use variable */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 8px var(--shadow-base-color); /* Use variable */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.value-card:hover {
+    transform: translateY(-5px); /* Lifts the card */
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Expands the shadow */
+}
+
+/* General style for value icons (about page) */
+.value-icon {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin-bottom: var(--spacing-md);
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(80%) sepia(45%) saturate(301%) hue-rotate(334deg) brightness(101%) contrast(101%); /* Saffaron color filter */
+    transition: filter 0.3s ease;
+}
+/* Make value icons white in dark mode */
+body.dark-mode .value-icon {
+    filter: invert(1);
+}
+
+.value-card h3 {
+    color: var(--color-saffaron);
+    margin-bottom: var(--spacing-xs);
+}
+
+/* --- 9. Services Page Specific Styles --- */
+.service-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+}
+
+.service-detail-item {
+    background-color: var(--card-bg); /* Use variable */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 8px var(--shadow-base-color); /* Use variable */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left; /* Default for this block's text */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    /* Removed cursor: pointer; here as it no longer opens a modal */
+}
+
+.service-detail-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+}
+
+/* General style for detail icons (services page detail) */
+.detail-icon {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--spacing-md);
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(14%) sepia(34%) saturate(2250%) hue-rotate(130deg) brightness(94%) contrast(101%); /* Make icons green */
+    transition: filter 0.3s ease;
+}
+/* Make detail icons white in dark mode */
+body.dark-mode .detail-icon {
+    filter: invert(1);
+}
+
+.service-detail-item h3 {
+    color: var(--text-primary); /* Use variable */
+    margin-bottom: var(--spacing-xs);
+}
+
+.service-detail-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --- 10. Contact Page Specific Styles --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Info on left, form on right */
+    gap: var(--spacing-xl);
+    align-items: flex-start;
+}
+
+.contact-info {
+    padding: var(--spacing-md);
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.contact-info .info-item h4 {
+    margin-bottom: 0;
+    color: var(--color-castleton-green);
+}
+
+.contact-info .info-item p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.contact-info .info-item a {
+    color: var(--text-primary); /* Use variable */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info .info-item a:hover {
+    color: var(--color-saffaron);
+}
+
+.social-contact {
+    margin-top: var(--spacing-xl);
+}
+
+.social-contact h4 {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-form-container {
+    background-color: var(--card-bg); /* Use variable */
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form-container h3 {
+    margin-bottom: var(--spacing-lg);
+}
+
+.contact-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--text-primary); /* Use variable */
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+/* General form field base styles - Applied to all relevant form elements */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea,
+.contact-form select,
+.contact-form input[type="number"],
+.contact-form input[type="url"],
+.contact-form input[type="date"],
+.contact-form input[type="time"],
+.contact-form input[type="file"] { /* Added file input */
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-manrope);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    height: calc(2.5rem + 2px); /* Consistent height for all form inputs */
+    /* REMOVED: background-image from here. It will be added ONLY to select below. */
+    /* REMOVED: appearance related properties from here. They will be handled specifically for select/number/date/time. */
+}
+
+/* New: Style for read-only fields */
+.contact-form .read-only-field {
+    background-color: var(--bg-secondary); /* A slightly different background */
+    border-color: var(--border-color); /* Keep border clear */
+    cursor: default; /* Change cursor */
+    opacity: 0.9; /* Slightly faded */
+    pointer-events: none; /* Prevent clicks/interactions */
+}
+body.dark-mode .contact-form .read-only-field {
+    background-color: #3e3e5c; /* Darker background for disabled in dark mode */
+}
+
+
+/* Ensure ALL input types initially have no background image (no default arrow) */
+.contact-form input { /* Target all input types directly */
+    background-image: none !important; /* Use !important to override any specific browser defaults or previous rules */
+}
+
+
+/* Specific styling for <select> to give it a custom arrow */
+.contact-form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%23333' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path d='M6 9l6 6 6-6'></path></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.7em center;
+    background-size: 1em;
+
+    padding: 10px;
+    padding-right: 2.5em; /* ensures text doesn’t overlap with arrow */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Dark mode adjustment for select arrow */
+body.dark-mode .contact-form select {
+    background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"%3E%3Cpath fill="%23b0b0b0" d="M7 9.7l3-3 1.4 1.4L6 12 0.6 6.1 2 4.7l3 3V0h2v7.7z"/%3E%3C/svg%3E'); /* A light grey color for dark mode */
+}
+
+
+/* Hide default arrows/spinners for number, date, time inputs */
+/* Chrome, Safari, Edge, Opera */
+.contact-form input[type="number"]::-webkit-inner-spin-button,
+.contact-form input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+.contact-form input[type="number"] {
+    appearance: textfield; /* STANDARD PROPERTY */
+    -moz-appearance: textfield;
+}
+
+/* For date and time inputs, hide clear/calendar icons (mostly Webkit) */
+.contact-form input[type="date"]::-webkit-calendar-picker-indicator,
+.contact-form input[type="time"]::-webkit-calendar-picker-indicator {
+    appearance: none; /* STANDARD PROPERTY ADDED */
+    -webkit-appearance: none; /* Hide the default icon */
+    opacity: 0; /* Fallback for older browsers or if appearance:none isn't enough */
+    width: 1em; /* Make it clickable if needed, but invisible */
+    height: 1em;
+    cursor: pointer; /* Retain cursor to indicate clickability for native picker */
+}
+/* Ensure no custom background image (arrow) is on standard input types */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form input[type="number"],
+.contact-form input[type="url"],
+.contact-form input[type="date"],
+.contact-form input[type="time"],
+.contact-form input[type="file"] { /* Added file input */
+    background-image: none; /* REMOVE any inherited custom arrows */
+}
+
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form button {
+    width: auto;
+    margin-top: var(--spacing-md);
+}
+
+/* Adjust button layout in job application form */
+#jobApplicationModal .contact-form button {
+    width: 100%; /* Make buttons full width */
+    margin-top: var(--spacing-sm); /* Smaller margin between buttons */
+}
+#jobApplicationModal .contact-form #backToJobListingsBtn {
+    background-color: var(--color-castleton-green); /* Example back button color */
+    color: var(--color-white);
+    border-color: var(--color-castleton-green);
+    margin-bottom: var(--spacing-sm); /* Margin to separate from submit button */
+}
+#jobApplicationModal .contact-form #backToJobListingsBtn:hover {
+    background-color: var(--color-dark-serpent);
+    border-color: var(--color-dark-serpent);
+}
+
+
+/* Toast Messages (Optional, if using for dashboard) */
+.toast-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-dark-serpent);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 10002;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    max-width: 90%; /* Ensure it doesn't overflow on small screens */
+    text-align: center;
+}
+.toast-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+.toast-message.success {
+    background-color: #48BB78; /* Green */
+    color: var(--color-white);
+}
+.toast-message.error {
+    background-color: #E53E3E; /* Red */
+    color: var(--color-white);
+}
+.toast-message.warning { /* Added for EmailJS non-critical failures */
+    background-color: #FFC107; /* Orange/Yellow */
+    color: #333;
+}
+.toast-message.info { /* Added for general info */
+    background-color: #17A2B8; /* Blue-ish */
+    color: var(--color-white);
+}
+
+/* Loading Overlay */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10003; /* Above everything else, including toasts */
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#loadingOverlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--color-saffaron);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.map-section {
+    background-color: var(--bg-secondary); /* Use variable */
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    transition: background-color 0.3s ease;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 450px;
+    background-color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: #666;
+    border-radius: var(--border-radius-md);
+    overflow: hidden; /* Ensures iframe respects border-radius */
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+    transition: box-shadow 0.3s ease;
+}
+
+.map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Scroll-to-Top Button */
+.scroll-to-top {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background-color: var(--color-saffaron);
+    color: var(--color-dark-serpent); /* Force dark text on saffron button */
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    z-index: 900;
+    box-shadow: 0 8px 16px var(--shadow-medium-color); /* Use variable */
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-earth-yellow);
+}
+
+/* Ensure scroll-to-top icon remains dark in dark mode */
+body.dark-mode .scroll-to-top {
+    color: var(--color-dark-serpent);
+}
+
+/* ADDED: Hidden Admin Link for contact.html */
+.footer-bottom #admin-secret-link {
+    display: inline-block; /* Make it clickable and reserve space */
+    width: 15px; /* Tiny clickable area */
+    height: 15px;
+    opacity: 0; /* Invisible */
+    position: absolute; /* Position it relative to the .footer-bottom container */
+    bottom: 5px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    z-index: 99; /* Ensure it's clickable */
+    cursor: pointer;
+    /* Optional: for debugging, remove in production */
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    /* border: 1px solid rgba(255, 0, 0, 0.5); */
+}
+
+
+/* --- 11. Responsiveness (Mobile-First approach) --- */
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+    .theme-toggle {
+        order: 1; /* Place theme toggle before nav toggle on mobile */
+        margin-right: var(--spacing-sm); /* Adjust spacing */
+        margin-left: auto; /* Push it to the right */
+    }
+    .main-nav {
+        order: 2; /* Place nav below toggle buttons */
+        flex-grow: 0; /* Don't grow on mobile */
+    }
+    .main-header .container {
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: space-between; /* Space logo and toggles */
+        padding: var(--spacing-sm) var(--spacing-md);
+        position: relative; /* Needed for z-index context */
+        z-index: 1000; /* Higher than mobile menu */
+    }
+    .main-nav .nav-list {
+        display: flex; /* Always display flex for the transition */
+        flex-direction: column;
+        position: fixed; /* CHANGED TO FIXED */
+        top: 0; /* Cover entire screen */
+        left: 0;
+        width: 100%;
+        height: 100vh; /* Full viewport height */
+        background-color: var(--header-bg); /* Use variable for mobile menu */
+        box-shadow: var(--box-shadow-medium);
+        padding: var(--spacing-xxl) 0; /* More top/bottom padding for visual space */
+        z-index: 999; /* Below toggle buttons, above overlay */
+        transition: transform 0.3s ease-out, opacity 0.3s ease, visibility 0.3s ease;
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0;
+        visibility: hidden;
+        justify-content: center; /* Center nav links vertically */
+        align-items: center; /* Center nav links horizontally */
+    }
+
+    .main-nav .nav-list.open {
+        transform: translateX(0); /* Slide in from right */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .main-nav .nav-list li {
+        width: 100%;
+        text-align: center;
+        margin-bottom: var(--spacing-md); /* Add spacing between items */
+    }
+    .main-nav .nav-list li:last-child {
+        margin-bottom: 0;
+    }
+
+    .main-nav .nav-list a {
+        color: var(--text-primary); /* Links follow text color */
+        padding: 0.8rem 0; /* Increase clickable area */
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    .main-nav .nav-list a:hover,
+    .main-nav .nav-list a.active {
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--color-saffaron);
+    }
+    .main-nav .nav-list a::after {
+        display: none; /* Hide underline on mobile */
+    }
+
+    .hero-section {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(2.2rem, 8vw, 3rem);
+    }
+
+    .about-overview, .about-us-grid {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .about-image, .about-image-block {
+        order: -1; /* Move image above text on mobile */
+    }
+
+    .services-grid, .about-values-grid, .service-details-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .service-card, .value-card, .service-detail-item {
+        margin-bottom: var(--spacing-md);
+    }
+    .service-detail-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    .cta-banner {
+        padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .cta-banner h2 {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .main-footer .container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+
+    .footer-col {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .footer-about .logo,
+    .footer-links ul,
+    .footer-contact p,
+    .social-icons {
+        justify-content: center;
+        align-items: center; /* Center icons too */
+    }
+
+    .main-footer .social-icons {
+        flex-direction: row; /* Make social icons horizontal in footer on mobile */
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    .contact-info .info-item {
+        justify-content: center;
+    }
+
+    .social-contact {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .social-contact h4 {
+        margin-bottom: var(--spacing-sm);
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .container {
+        padding: 0 var(--spacing-xl);
+    }
+}
+
+/* --- 12. Projects Page Specific Styles --- */
+.projects-hero {
+    background-size: cover;
+    background-position: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+}
+
+.project-card {
+    background-color: var(--card-bg); /* Use variable */
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 8px var(--shadow-base-color); /* Use variable */
+    overflow: hidden; /* Ensures image corners are rounded */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-decoration: none; /* Remove underline from the whole card if it's a link container */
+    color: inherit; /* Inherit text color */
+    cursor: pointer; /* Indicate clickability */
+}
+
+.project-card:hover {
+    transform: translateY(-8px); /* Lifts the card more prominently */
+    box-shadow: 0 12px 24px var(--shadow-medium-color); /* Expands the shadow */
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 220px; /* Fixed height for thumbnails */
+    object-fit: cover; /* Ensures images cover the area */
+    display: block;
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+    transition: transform 0.3s ease; /* Smooth scale on hover */
+}
+
+.project-card:hover .project-thumbnail {
+    transform: scale(1.03); /* Slight zoom on image */
+}
+
+.project-content {
+    padding: var(--spacing-md);
+    flex-grow: 1; /* Allows content to take up remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card h3 {
+    font-size: 1.4rem;
+    color: var(--color-dark-serpent); /* Specific color for project titles */
+    margin-bottom: var(--spacing-xs);
+    transition: color 0.3s ease;
+}
+
+body.dark-mode .project-card h3 {
+    color: var(--color-saffaron); /* Saffaron in dark mode */
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--text-primary); /* Use variable */
+    margin-bottom: var(--spacing-sm);
+    flex-grow: 1; /* Allows description to grow */
+}
+
+.project-tag {
+    display: inline-block;
+    background-color: var(--color-earth-yellow);
+    color: var(--color-dark-serpent);
+    padding: 0.3rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+    align-self: flex-start; /* Align tag to the start of the flex container */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .project-tag {
+    background-color: var(--color-castleton-green);
+    color: var(--color-white);
+}
+
+/* Responsiveness for Projects Grid */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+
+    .project-thumbnail {
+        height: 200px; /* Slightly smaller height on mobile */
+    }
+}
+
+/* --- 13. Modal System --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; /* Above everything else */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content-wrapper {
+    background-color: var(--card-bg); /* Use card background */
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    max-width: 800px;
+    max-height: 90vh; /* Limit height for responsiveness */
+    overflow-y: auto; /* Scroll if content overflows */
+    position: relative; /* Changed from fixed to relative as per my previous internal logic, but the close button itself will be fixed */
+    transform: scale(0.9); /* Start slightly smaller */
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out, background-color 0.3s ease;
+    /* Adjusted padding to make space for the fixed close button */
+    padding-top: var(--spacing-xxl); /* More top padding */
+    padding-right: var(--spacing-xl); /* Consistent side padding */
+}
+
+.modal-overlay.show .modal-content-wrapper {
+    transform: scale(1); /* Scale to full size */
+    opacity: 1;
+}
+
+/* Job Application Modal Content - specific padding */
+.job-modal-content {
+    /* Specific padding to ensure content isn't under the fixed close button */
+    padding-top: calc(var(--spacing-xl) + 20px); /* Adjust based on new close button size */
+    padding-right: calc(var(--spacing-xl) + 20px);
+}
+
+
+/* Modal Close Button - Position Fixed */
+.modal-close-button {
+    position: fixed; /* Changed to fixed */
+    top: var(--spacing-md); /* Distance from top of viewport */
+    right: var(--spacing-md); /* Distance from right of viewport */
+    background-color: var(--color-saffaron); /* Solid saffron background for high visibility */
+    border: none;
+    color: var(--color-dark-serpent);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    z-index: 10001; /* Ensure it's above the modal content and overlay */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Add subtle shadow */
+}
+
+
+.modal-close-button:hover {
+    background-color: var(--color-castleton-green);
+    color: var(--color-white);
+    transform: rotate(90deg) scale(1.05); /* Added slight scale on hover */
+}
+
+/* Adjust modal content padding so it doesn't get covered by the fixed close button */
+/* This rule is now effectively superseded by specific modal-content-wrapper and job-modal-content paddings */
+/* .modal-content-wrapper {
+    padding-top: calc(var(--spacing-xl) + 1.5rem);
+    padding-right: calc(var(--spacing-xl) + 1.5rem);
+} */
+
+/* NEW: Styles for modal content enhancements */
+.modal-content-wrapper h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    text-align: center; /* Center the title */
+}
+
+.modal-content-wrapper img.modal-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-sm);
+    margin: var(--spacing-md) auto var(--spacing-lg); /* Centered horizontally with margin-bottom */
+    display: block; /* Ensures no extra space below image */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for images */
+}
+
+.modal-content-wrapper p {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.modal-info-section {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-info-section h4 {
+    color: var(--color-castleton-green); /* Green heading for section titles */
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.25rem;
+}
+
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-info-item p {
+    margin-bottom: 0.5rem; /* Smaller margin for info items */
+}
+
+.modal-info-label {
+    font-weight: 600; /* Bold label */
+    color: var(--color-saffaron); /* Saffron color for labels */
+    display: block; /* Make label appear above value if needed */
+    font-size: 0.95rem;
+}
+
+.modal-info-value {
+    color: var(--text-primary); /* Default text color for value */
+    font-size: 0.95rem;
+}
+
+.modal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.modal-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-castleton-green);
+    color: var(--color-white);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modal-link:hover {
+    background-color: var(--color-dark-serpent);
+    transform: translateY(-2px);
+}
+
+/* Dark mode adjustments for modal specific elements */
+body.dark-mode .modal-info-label {
+    color: var(--color-earth-yellow);
+}
+body.dark-mode .modal-info-section h4 {
+    color: var(--color-earth-yellow);
+}
+body.dark-mode .modal-link {
+    background-color: var(--color-saffaron);
+    color: var(--color-dark-serpent);
+}
+body.dark-mode .modal-link:hover {
+    background-color: var(--color-earth-yellow);
+    color: var(--color-dark-serpent);
+}
+
+/* NEW MODAL STYLES (for Job Board and Contact Reply) */
+
+.job-board-content {
+    max-width: 900px; /* Wider for job listings */
+}
+
+.job-listings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.job-card-listing {
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.job-card-listing:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium);
+}
+
+.job-card-listing h4 {
+    color: var(--color-castleton-green);
+    margin-bottom: var(--spacing-xs);
+}
+
+.job-card-listing p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+}
+
+.job-card-listing .btn {
+    width: 100%; /* Make apply button full width */
+    text-align: center;
+}
+
+.contact-reply-modal-content {
+    max-width: 600px; /* Appropriate width for a reply form */
+}
+.contact-reply-modal-content h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+.contact-reply-modal-content .form-group label {
+    font-size: 1rem;
+}
+.contact-reply-modal-content .reply-history {
+    max-height: 200px; /* Limit height of history */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    background-color: var(--bg-primary); /* Background for history */
+}
+.contact-reply-modal-content .reply-history-item {
+    margin-bottom: var(--spacing-xs);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px dotted var(--border-color);
+}
+.contact-reply-modal-content .reply-history-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.contact-reply-modal-content .reply-history-item p {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+.contact-reply-modal-content .reply-history-item .reply-meta {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: right;
+    margin-top: 0.2rem;
+}
+
+
+/* Admin panel styles */
+/* Base admin-container for login page */
+.admin-container {
+    max-width: 500px; /* Make login form a bit narrower */
+    margin: var(--spacing-xxl) auto;
+    padding: var(--spacing-xl);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-medium);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="password"],
+.admin-form input[type="email"] { /* Added email to admin form inputs */
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-manrope);
+    font-size: 1rem;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-form input:focus {
+    outline: none;
+    border-color: var(--color-saffaron);
+    box-shadow: 0 0 0 3px rgba(var(--color-saffaron), 0.2);
+}
+
+/* Admin message (for login form) */
+.admin-message {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.95rem;
+    text-align: center;
+    display: none; /* Hidden by default */
+}
+.admin-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.admin-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+/* NEW DASHBOARD STYLES - Using Website's Branding */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--bg-primary); /* Main content background from theme */
+    color: var(--text-primary); /* Main content text color from theme */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Theme transition */
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-dark-serpent); /* Fixed dark green like footer */
+    color: var(--color-white); /* Fixed white text */
+    padding: var(--spacing-lg) var(--spacing-md);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Stronger shadow for sidebar */
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0; /* Prevent shrinking on smaller screens */
+}
+
+.sidebar .user-profile {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+.sidebar .user-profile .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--color-castleton-green); /* Example avatar color: green */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0 auto var(--spacing-sm);
+    color: var(--color-white);
+}
+.sidebar .user-profile h3 {
+    color: var(--color-white); /* Always white on dark sidebar */
+    font-size: 1.2rem;
+    margin-bottom: var(--spacing-xs);
+}
+.sidebar .user-profile p {
+    color: rgba(255, 255, 255, 0.7); /* Lighter white on dark sidebar */
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+.sidebar-nav-list {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1; /* Allows it to take available space */
+}
+
+.sidebar-nav-list li {
+    margin-bottom: var(--spacing-sm);
+}
+
+.sidebar-nav-list a {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8); /* Slightly faded white for links */
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.sidebar-nav-list a:hover {
+    background-color: rgba(255, 179, 71, 0.15); /* Saffaron with opacity */
+    color: var(--color-saffaron); /* Saffaron color on hover */
+}
+
+.sidebar-nav-list a.active {
+    background-color: var(--color-castleton-green); /* Active: green */
+    color: var(--color-white);
+}
+
+.sidebar-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: invert(1); /* Ensure icons are white on dark sidebar */
+}
+
+.main-dashboard-content {
+    flex-grow: 1;
+    padding: var(--spacing-xl);
+    overflow-y: auto; /* Enable scrolling for content if needed */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Theme transition */
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color); /* Uses theme border color */
+    transition: border-color 0.3s ease;
+}
+
+/* Dashboard Filter Bar - General (Desktop) Styles */
+.dashboard-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md) var(--spacing-lg); /* Vertical and horizontal gap */
+    margin-bottom: var(--spacing-lg);
+    align-items: center; /* Vertically aligns items in the flex container */
+    padding: var(--spacing-sm) 0;
+    justify-content: flex-start; /* Align items to the left (start) */
+}
+
+.dashboard-filter-bar label {
+    font-weight: 500;
+    margin-right: 0.25rem; /* Keep label close to the input/select */
+    color: var(--text-primary);
+    white-space: nowrap; /* Prevents the label from wrapping */
+}
+/* Dashboard Filter Bar Inputs & Selects - General (Desktop) Styles */
+.dashboard-filter-bar input[type="text"],
+.dashboard-filter-bar select {
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 0.95rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+    height: 40px; /* Consistent height for all filter inputs/selects */
+    vertical-align: middle;
+    flex-shrink: 0; /* Prevents items from shrinking too much */
+    background-image: none; /* Ensure no background image (e.g., from select arrow) overrides for text inputs */
+}
+
+/* NEW: Refresh Button for Dashboard Admin Pages */
+.refresh-button {
+    background-color: var(--color-saffaron);
+    color: var(--color-dark-serpent); /* Ensure text is dark on saffron */
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap; /* Prevent text from wrapping */
+    font-size: 0.9rem; /* Adjust size to fit header well */
+    margin-left: var(--spacing-md); /* Space from existing h1 */
+}
+
+.refresh-button:hover {
+    background-color: var(--color-earth-yellow);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    /* ... other existing mobile rules ... */
+
+    /* Dashboard Filter Bar - Mobile Specific Styles */
+    .dashboard-filter-bar {
+        flex-direction: column; /* Stack items vertically on mobile */
+        align-items: flex-start; /* Align items to the left */
+        gap: var(--spacing-sm) 0; /* Adjust gap for vertical stacking */
+        padding: var(--spacing-md) 0; /* Add more padding for mobile layout */
+    }
+    .dashboard-filter-bar label {
+        width: 100%; /* Make labels full width */
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 0.25rem; /* Add some space below the label */
+        /* Removed duplicated font-weight, color, white-space - they are inherited from general rule */
+    }
+    .dashboard-filter-bar input[type="text"],
+    .dashboard-filter-bar select {
+        width: 100%; /* Make inputs/selects full width on mobile */
+        min-width: unset; /* Override min-width for full width */
+        margin-bottom: var(--spacing-md); /* Space between filter groups */
+        /* Removed duplicated padding, border, border-radius, font-size, background-color, color, transition, height, flex-shrink - they are inherited from general rule */
+    }
+
+    /* Responsive adjustment for dashboard header */
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm); /* Add gap for vertical stacking */
+    }
+    .dashboard-header h1 {
+        margin-bottom: 0; /* Remove default margin */
+    }
+    .refresh-button {
+        align-self: flex-end; /* Align to the right within the column layout */
+        margin-left: 0; /* Reset margin */
+        margin-top: var(--spacing-sm); /* Add margin from the h1 */
+    }
+
+    /* ... rest of your mobile rules ... */
+}
+
+.dashboard-filter-bar input[type="text"]:focus,
+.dashboard-filter-bar select:focus {
+    outline: none;
+    border-color: var(--color-saffaron);
+    box-shadow: 0 0 0 2px rgba(var(--color-saffaron), 0.2);
+}
+
+.dashboard-section {
+    margin-bottom: var(--spacing-xxl);
+}
+.dashboard-section h2 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary); /* Uses theme text color */
+    transition: color 0.3s ease;
+}
+
+/* Dashboard Cards */
+.dashboard-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-card {
+    background-color: var(--card-bg); /* Uses theme card background */
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light); /* Uses theme shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium); /* Uses theme shadow */
+}
+.dashboard-card .card-icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: var(--spacing-sm);
+    filter: brightness(0); /* Black in light mode */
+    transition: filter 0.3s ease;
+}
+body.dark-mode .dashboard-card .card-icon {
+    filter: invert(1); /* White in dark mode */
+}
+
+.dashboard-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary); /* Uses theme text color */
+    transition: color 0.3s ease;
+}
+.dashboard-card p {
+    font-size: 1rem;
+    color: var(--text-secondary); /* Uses theme secondary text color */
+    transition: color 0.3s ease;
+}
+
+/* Chart Styles */
+.chart-container {
+    background-color: var(--card-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-medium);
+    margin-bottom: var(--spacing-xxl);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Recent Activity Styles */
+.recent-activity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.recent-activity-card {
+    background-color: var(--card-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-light);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+.recent-activity-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-medium);
+}
+.recent-activity-card h4 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-castleton-green);
+}
+.recent-activity-list {
+    list-style: none;
+    padding: 0;
+}
+.recent-activity-list li {
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px dashed var(--border-color);
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+.recent-activity-list li:last-child {
+    border-bottom: none;
+}
+.recent-activity-list .activity-name {
+    font-weight: 500;
+}
+.recent-activity-list .activity-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap; /* Prevent date from wrapping */
+}
+
+
+/* Action Buttons in tables - Use fixed colors for clear UX */
+.action-button {
+    padding: 5px 10px;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.8rem;
+    cursor: pointer;
+    border: none;
+    margin-right: 5px; /* Default margin, overridden by flex gap in action-buttons td */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    color: var(--color-white); /* All action buttons have white text */
+}
+.action-button.accept {
+    background-color: var(--dashboard-success-color);
+}
+.action-button.accept:hover {
+    background-color: #38A169; /* Darker green */
+    transform: translateY(-1px);
+}
+.action-button.reject {
+    background-color: var(--dashboard-danger-color); /* Red for reject */
+}
+.action-button.reject:hover {
+    background-color: #C53030; /* Darker red */
+    transform: translateY(-1px);
+}
+.action-button.reply {
+    background-color: var(--dashboard-info-color);
+}
+.action-button.reply:hover {
+    background-color: #3182CE; /* Darker blue */
+    transform: translateY(-1px);
+}
+.action-button.ignore { /* New ignore button */
+    background-color: var(--dashboard-warning-color);
+    color: var(--dashboard-accent-text-color); /* Dark text for light background */
+}
+.action-button.ignore:hover {
+    background-color: #e0ac00; /* Darker orange */
+    transform: translateY(-1px);
+}
+.action-button.delete { /* General delete button */
+    background-color: var(--dashboard-danger-color);
+}
+.action-button.delete:hover {
+    background-color: #C53030;
+    transform: translateY(-1px);
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    margin-bottom: 0.25rem; /* Small margin for stacking in action columns */
+    align-self: center; /* Center horizontally in flex column */
+}
+.status-badge.accepted {
+    background-color: var(--dashboard-success-color);
+    color: var(--color-white);
+}
+.status-badge.rejected {
+    background-color: var(--dashboard-danger-color);
+    color: var(--color-white);
+}
+.status-badge.pending {
+    background-color: var(--dashboard-warning-color);
+    color: var(--dashboard-accent-text-color);
+}
+.status-badge.new {
+    background-color: var(--dashboard-info-color);
+    color: var(--color-white);
+}
+.status-badge.replied {
+    background-color: var(--dashboard-success-color);
+    color: var(--color-white);
+}
+.status-badge.ignored {
+    background-color: #888; /* Grey for ignored */
+    color: var(--color-white);
+}
+/* Category badges on Contact page */
+.status-badge.category {
+    background-color: var(--color-castleton-green); /* Example: green for general category */
+    color: var(--color-white);
+}
+.status-badge.category.job-inquiry {
+    background-color: var(--color-saffaron);
+    color: var(--dashboard-accent-text-color);
+}
+.status-badge.category.technical-issue {
+    background-color: var(--dashboard-danger-color);
+    color: var(--color-white);
+}
+.status-badge.category.partnership { /* New: Partnership category */
+    background-color: #9C27B0; /* Purple */
+    color: var(--color-white);
+}
+.status-badge.category.other {
+    background-color: #90A4AE; /* Light blue-grey */
+    color: var(--color-white);
+}
+
+
+/* Table styles */
+.dashboard-table-container {
+    overflow-x: auto; /* Allow horizontal scrolling for tables */
+    margin-bottom: var(--spacing-xl);
+    background-color: var(--card-bg); /* Uses theme card background */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--box-shadow-medium); /* Uses theme shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* table-layout: fixed; Removed fixed layout for better column content adaptation,
+       relying on explicit widths and word-wrap for responsiveness */
+    /* REMOVED: min-width to fix unnecessary horizontal scroll */
+}
+
+.dashboard-table th, .dashboard-table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color); /* Uses theme border color */
+    text-align: left;
+    font-size: 0.9rem;
+    vertical-align: middle; /* Ensures content is vertically centered */
+    color: var(--text-primary);
+    transition: color 0.3s ease, border-color 0.3s ease;
+    word-wrap: break-word; /* Allow long words to break */
+}
+
+/* NEW Column Widths for streamlined tables (sum to 100%) */
+/* Job Applicants Table (6 columns) */
+#jobApplicantsTable th:nth-child(1) { width: 15%; } /* Timestamp */
+#jobApplicantsTable th:nth-child(2) { width: 18%; } /* Name */
+#jobApplicantsTable th:nth-child(3) { width: 22%; } /* Email */
+#jobApplicantsTable th:nth-child(4) { width: 15%; } /* Project */
+#jobApplicantsTable th:nth-child(5) { width: 10%; } /* Status */
+#jobApplicantsTable th:nth-child(6) { width: 20%; } /* Actions */
+
+
+/* NEW: Contact Messages Table (7 columns) - OPTIMIZED WIDTHS */
+#contactMessagesTable th:nth-child(1) { width: 15%; } /* Timestamp */
+#contactMessagesTable th:nth-child(2) { width: 15%; } /* Name */
+#contactMessagesTable th:nth-child(3) { width: 20%; } /* Email */
+#contactMessagesTable th:nth-child(4) { width: 15%; } /* Subject */
+#contactMessagesTable th:nth-child(5) { width: 10%; } /* Category */
+#contactMessagesTable th:nth-child(6) { width: 10%; } /* Status */
+#contactMessagesTable th:nth-child(7) { width: 15%; } /* Actions */
+
+
+.dashboard-table th {
+    background-color: var(--bg-secondary); /* Uses theme secondary background */
+    font-weight: 600;
+    color: var(--text-primary); /* Uses theme text color */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dashboard-table tr:nth-child(even) {
+    background-color: rgba(var(--text-primary), 0.05); /* Very subtle alternating row color based on text */
+}
+/* Adjustments for dark mode for table rows */
+body.dark-mode .dashboard-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle white tint for dark mode */
+}
+
+
+.dashboard-table a {
+    color: var(--link-color); /* Uses theme link color */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.dashboard-table a:hover {
+    text-decoration: underline;
+    color: var(--color-saffaron); /* Uses brand accent color on hover */
+}
+
+/* REDEFINED: Actions in table cells to accommodate multiple buttons/status */
+/* This now applies to ALL tables' action cells (job applicants and contacts) */
+.dashboard-table td.action-buttons {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center; /* Center items vertically within the cell */
+    align-items: center;    /* Center items horizontally within the cell */
+    gap: 0.5rem;            /* Space between stacked items (status, buttons) */
+    padding: 0.5rem;        /* Minimal padding around the stacked content */
+}
+.dashboard-table td.action-buttons .btn {
+    width: fit-content;    /* Allow button to shrink to its content */
+    min-width: 80px;      /* Ensure a minimum width for readability */
+    padding: 0.4rem 0.6rem; /* Slightly smaller padding for buttons in table */
+    font-size: 0.8rem;     /* Smaller font size */
+    text-align: center;
+    line-height: 1.2;      /* Adjust line-height for text within button */
+}
+
+/* Specific styling for the delete button that is now directly in the table cell */
+.dashboard-table td.action-buttons .delete-from-table-btn { /* Used in Job Applicants table */
+    background-color: var(--dashboard-danger-color);
+    color: var(--color-white);
+    margin-right: 0; /* Ensure no residual margin from general .action-button */
+}
+.dashboard-table td.action-buttons .delete-from-table-btn:hover {
+    background-color: #C53030; /* Darker red */
+    transform: translateY(-1px);
+}
+
+/* Specific styling for the delete button in the Contact Messages table */
+.dashboard-table td.action-buttons .delete { /* Used for delete button in Contact Messages */
+    background-color: var(--dashboard-danger-color);
+    color: var(--color-white);
+    margin-right: 0; /* Ensure no residual margin from general .action-button */
+}
+.dashboard-table td.action-buttons .delete:hover {
+    background-color: #C53030; /* Darker red */
+    transform: translateY(-1px);
+}
+
+
+/* Ensure status badge also works well in the stacked column */
+.dashboard-table td.action-buttons .application-status-accepted,
+.dashboard-table td.action-buttons .application-status-rejected,
+.dashboard-table td.action-buttons .application-status-pending,
+.dashboard-table td.action-buttons .status-badge {
+    margin-bottom: 0; /* Ensure no default margin-bottom is fighting with flex gap */
+    width: fit-content; /* Allow badge to shrink to content */
+}
+
+/* REMOVED .action-buttons-modal from here as its content is moved */
+/* This rule is no longer needed:
+.action-buttons-modal { ... }
+*/
+
+/* Responsive adjustments for dashboard */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        padding: var(--spacing-md);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        position: sticky; /* Make sidebar sticky on top */
+        top: 0;
+        z-index: 900;
+        height: auto; /* Allow height to adjust to content */
+    }
+    .sidebar .user-profile {
+        margin-bottom: var(--spacing-md);
+    }
+    .sidebar-nav-list {
+        flex-direction: row; /* Horizontal nav for mobile sidebar */
+        justify-content: center;
+        flex-wrap: wrap; /* Allow wrapping if many items */
+        gap: var(--spacing-sm);
+    }
+    .sidebar-nav-list li {
+        margin-bottom: 0;
+    }
+    .sidebar-nav-list a {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+    .sidebar-icon {
+        display: none; /* Hide icons on small screen horizontal nav */
+    }
+    .main-dashboard-content {
+        padding: var(--spacing-md);
+    }
+    .dashboard-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dashboard-header h1 {
+        font-size: clamp(2rem, 7vw, 3rem);
+    }
+    .dashboard-table-container {
+        overflow-x: scroll; /* Enable horizontal scrolling for tables on mobile */
+    }
+    .dashboard-table th, .dashboard-table td {
+        padding: var(--spacing-sm); /* Reduce padding on mobile */
+        font-size: 0.8rem;
+    }
+    /* Specific column widths for mobile - to prevent overflow on very small screens */
+    /* Pending Applications Table (5 columns) */
+    #pendingApplicationsTable th:nth-child(1) { width: 20%; } /* Timestamp */
+    #pendingApplicationsTable th:nth-child(2) { width: 25%; } /* Name */
+    #pendingApplicationsTable th:nth-child(3) { width: 25%; } /* Email */
+    #pendingApplicationsTable th:nth-child(4) { width: 15%; } /* Project */
+    #pendingApplicationsTable th:nth-child(5) { width: 15%; } /* Actions */
+
+    /* Job Applicants Table (6 columns) */
+    #jobApplicantsTable th:nth-child(1) { width: 15%; } /* Timestamp */
+    #jobApplicantsTable th:nth-child(2) { width: 20%; } /* Name */
+    #jobApplicantsTable th:nth-child(3) { width: 20%; } /* Email */
+    #jobApplicantsTable th:nth-child(4) { width: 15%; } /* Project */
+    #jobApplicantsTable th:nth-child(5) { width: 15%; } /* Status */
+    #jobApplicantsTable th:nth-child(6) { width: 15%; } /* Actions */
+
+    /* Contact Messages Table (7 columns) */
+    #contactMessagesTable th:nth-child(1) { width: 15%; } /* Timestamp */
+    #contactMessagesTable th:nth-child(2) { width: 15%; } /* Name */
+    #contactMessagesTable th:nth-child(3) { width: 20%; } /* Email */
+    #contactMessagesTable th:nth-child(4) { width: 12%; } /* Subject */
+    #contactMessagesTable th:nth-child(5) { width: 10%; } /* Category */
+    #contactMessagesTable th:nth-child(6) { width: 10%; } /* Status */
+    #contactMessagesTable th:nth-child(7) { width: 18%; } /* Actions */
+
+
+    .modal-info-grid {
+        grid-template-columns: 1fr; /* Stack modal info items vertically */
+    }
+    .modal-info-item.full-width {
+        grid-column: span 1; /* Override full-width on mobile to single column */
+    }
+    .dashboard-filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .dashboard-filter-bar input[type="text"],
+    .dashboard-filter-bar select {
+        width: 100%; /* Full width for filter inputs on mobile */
+        min-width: unset;
+    }
+}
+
+/* General style for contact icons (phone, email, address in main contact-info section) */
+.contact-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    filter: brightness(0); /* Makes these icons black in light mode */
+    transition: filter 0.3s ease;
+    /* FIX: Ensure icons don't overflow their intended size */
+    max-width: 30px; /* Add this line */
+    max-height: 30px; /* Add this line */
+}
+
+/* Images for icons - NOT part of the CSS file structure but included for context */
+/*
+assets/images/about_image_block.webp
+assets/images/about_value_card1.png
+assets/images/about_value_card2.png
+assets/images/about_value_card3.png
+assets/images/address_icon.png
+assets/images/applicants.png
+assets/images/fb_icon.png
+assets/images/home.png
+assets/images/index_about_image.png
+assets/images/index_service_card1.png
+assets/images/index_service_card2.png
+assets/images/index_service_card3.png
+assets/images/lifewood_logo.png
+assets/images/linkedin_icon.png
+assets/images/logo.svg
+assets/images/mail_icon.png
+assets/images/pending.png
+assets/images/phone_icon.png
+assets/images/project_grid1.png
+assets/images/project_grid2.jpg
+assets/images/project_grid3.jpg
+assets/images/project_grid4.jpg
+assets/images/project_grid5.jpg
+assets/images/project_grid6.avif
+assets/images/service_detail_item1.png
+assets/images/service_detail_item2.png
+assets/images/service_detail_item3.png
+assets/images/service_detail_item4.png
+assets/images/service_detail_item5.png
+assets/images/service_detail_item6.png
+assets/images/web_icon.png
+assets/images/youtube_icon.png
+*/
+
+/* Video Fallbacks for Hero Sections */
+/*
+assets/images/about_hero_section.mp4
+assets/images/about_cta_banner.mp4
+assets/images/index_hero_section.mp4
+assets/images/index_cta_banner.mp4
+assets/images/project_hero_section.mp4
+assets/images/services_hero_section.mp4
+assets/images/service_cta_banner.mp4
+*/

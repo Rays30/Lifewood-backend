@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applicants - Lifewood Admin</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- EmailJS SDK (needed here for sending emails) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Replace "ah4oIE440AM0t21ja" with your actual EmailJS Public Key
+        (function() {
+            emailjs.init("ah4oIE440AM0t21ja"); 
+        })();
+    </script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">AD</div>
+                <h3>Admin Dashboard</h3>
+                <p>admin@lifewood.com</p>
+            </div>
+            <ul class="sidebar-nav-list">
+                <li><a href="dashboard.html"><img src="assets/images/home.png" alt="Home Icon" class="sidebar-icon" loading="lazy">Home</a></li>
+                <li><a href="jobapplicants.html" class="active"><img src="assets/images/applicants.png" alt="Job Applicants Icon" class="sidebar-icon" loading="lazy">Job Applicants</a></li>
+                <li><a href="managejobs.html"><img src="assets/images/briefcase.png" alt="Manage Jobs Icon" class="sidebar-icon" loading="lazy">Manage Jobs</a></li>
+                <li><a href="contacts.html"><img src="assets/images/mail_icon.png" alt="Contacts Icon" class="sidebar-icon" loading="lazy">Contacts</a></li>
+            </ul>
+            <button id="logoutButton" class="btn btn-secondary">Logout</button>
+        </nav>
+
+        <div class="main-dashboard-content">
+            <header class="dashboard-header">
+                <h1 class="headline-01" id="currentSectionTitle">Job Applications</h1>
+                <button class="refresh-button" onclick="location.reload()">🔄 Refresh</button>
+            </header>
+
+            <!-- Filters for Job Applicants -->
+            <div class="dashboard-filter-bar">
+                <label for="applicantFilter">Filter by Status:</label>
+                <select id="applicantFilter">
+                    <option value="All">All Applicants</option>
+                    <option value="Pending">Pending Only</option>
+                    <option value="Accepted">Accepted Only</option>
+                    <option value="Rejected">Rejected Only</option>
+                </select>
+                
+                <!-- MODIFIED: Filter by Department (was Project) -->
+                <label for="departmentFilter">Filter by Department:</label>
+                <select id="departmentFilter"> <!-- CHANGED ID to departmentFilter -->
+                    <option value="All">All Departments</option>
+                    <!-- Options will be dynamically populated by JavaScript -->
+                </select>
+                <input type="text" id="applicantSearchBar" placeholder="Search by name, email, or job title...">
+            </div>
+
+            <!-- Consolidated Job Applications Section -->
+            <section id="allApplicationsSection" class="dashboard-section">
+                <h2 class="headline-02">All Applications</h2>
+                <div class="dashboard-table-container">
+                    <table id="jobApplicantsTable" class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Job Title</th> <!-- MODIFIED: Changed to Job Title -->
+                                <th>Department</th> <!-- NEW: Added Department Column -->
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Job applications will be loaded here by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div id="toastMessage" class="toast-message"></div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Applicant Details Modal Structure - MODIFIED: Removed action buttons -->
+    <div id="applicantDetailsModal" class="modal-overlay">
+        <div class="modal-content-wrapper job-modal-content">
+            <button class="modal-close-button">×</button>
+            <h3>Applicant Details</h3>
+            <div class="modal-info-section">
+                <div class="modal-info-grid">
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Name:</span>
+                        <p id="applicantName"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Email:</span>
+                        <p><a href="#" id="applicantEmail"></a></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Age:</span>
+                        <p id="applicantAge"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Degree:</span>
+                        <p id="applicantDegree"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Job Title:</span> <!-- MODIFIED: Changed to Job Title -->
+                        <p id="applicantProject"></p> <!-- Keep ID for existing JS -->
+                    </div>
+                    <div class="modal-info-item"> <!-- NEW: Department Display -->
+                        <span class="modal-info-label">Department:</span>
+                        <p id="applicantDepartment"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Experience:</span>
+                        <p id="applicantExperience"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Available From:</span>
+                        <p id="applicantAvailableFrom"></p>
+                    </div>
+                    <div class="modal-info-item">
+                        <span class="modal-info-label">Available Until:</span>
+                        <p id="applicantAvailableUntil"></p>
+                    </div>
+                    <div class="modal-info-item full-width">
+                        <span class="modal-info-label">Resume Link:</span>
+                        <p><a href="#" id="applicantResumeLink" target="_blank">View Resume</a></p>
+                    </div>
+                    <div class="modal-info-item full-width">
+                        <span class="modal-info-label">Application Timestamp:</span>
+                        <p id="applicantTimestamp"></p>
+                    </div>
+                    <div class="modal-info-item full-width">
+                        <span class="modal-info-label">Current Status:</span>
+                        <p id="applicantStatus"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK (v10+) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script> <!-- Firebase Storage for resumes -->
+
+    <!-- Custom Firebase Config -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <!-- Job Applicants Specific Script -->
+    <script type="module" src="assets/js/job-applicants.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+</body>
+</html>

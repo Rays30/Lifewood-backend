@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lifewood</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+            <div class="user-profile">
+                <div class="avatar">AD</div> <!-- Placeholder for admin avatar -->
+                <h3>Admin Dashboard</h3>
+                <p>admin@lifewood.com</p>
+            </div>
+            <ul class="sidebar-nav-list">
+                <!-- Links now point to separate HTML pages -->
+                <li><a href="dashboard.html" id="navHome" class="active"><img src="assets/images/home.png" alt="Home Icon" class="sidebar-icon" loading="lazy">Home</a></li>
+                <li><a href="jobapplicants.html" id="navJobApplicants"><img src="assets/images/applicants.png" alt="Job Applicants Icon" class="sidebar-icon" loading="lazy">Job Applicants</a></li>
+                <li><a href="managejobs.html" id="navManageJobs"><img src="assets/images/briefcase.png" alt="Manage Jobs Icon" class="sidebar-icon" loading="lazy">Manage Jobs</a></li>
+                <li><a href="contacts.html" id="navContacts"><img src="assets/images/mail_icon.png" alt="Contacts Icon" class="sidebar-icon" loading="lazy">Contacts</a></li>
+            </ul>
+            <button id="logoutButton" class="btn btn-secondary">Logout</button>
+        </nav>
+
+        <div class="main-dashboard-content">
+            <header class="dashboard-header">
+                <h1 class="headline-01" id="currentSectionTitle">Dashboard Overview</h1>
+                <button class="refresh-button" onclick="location.reload()">🔄 Refresh</button>
+            </header>
+
+            <!-- Home Section (summary cards) -->
+            <section id="homeSection" class="dashboard-section active">
+                <h2 class="headline-02">Overview</h2>
+                <div class="dashboard-cards-grid">
+                    <div class="dashboard-card">
+                        <img src="assets/images/applicants.png" alt="Total Applicants Icon" class="card-icon" loading="lazy">
+                        <h3 id="totalApplicantsCount">0</h3>
+                        <p>Total Job Applicants</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <img src="assets/images/pending.png" alt="Pending Applicants Icon" class="card-icon" loading="lazy">
+                        <h3 id="pendingApplicantsCount">0</h3>
+                        <p>Pending Applications</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <img src="assets/images/mail_icon.png" alt="Total Contacts Icon" class="card-icon" loading="lazy">
+                        <h3 id="totalContactsCount">0</h3>
+                        <p>Total Contact Messages</p>
+                    </div>
+                    <!-- NEW WIDGET: Accepted Applicants Card -->
+                    <div class="dashboard-card">
+                        <img src="assets/images/applicants.png" alt="Accepted Applicants Icon" class="card-icon" loading="lazy">
+                        <h3 id="acceptedApplicantsCount">0</h3>
+                        <p>Accepted Applications</p>
+                    </div>
+                </div>
+
+                <!-- Chart for Applicants per day (EXISTING) -->
+                <h2 class="headline-02">Applicants per Day (Last 7 Days)</h2>
+                <div class="chart-container">
+                    <canvas id="applicantsChart"></canvas>
+                </div>
+
+                <!-- NEW WIDGET: Applications per Week Chart -->
+                <h2 class="headline-02">Applications per Week</h2>
+                <div class="chart-container">
+                    <canvas id="applicationsPerWeekChart"></canvas>
+                </div>
+
+                <!-- Recent Activity Section -->
+                <h2 class="headline-02">Recent Activity</h2>
+                <div class="recent-activity-grid">
+                    <div class="recent-activity-card">
+                        <h4>Latest Job Applications</h4>
+                        <ul id="latestApplicationsList" class="recent-activity-list">
+                            <li>No recent applications.</li>
+                        </ul>
+                    </div>
+                    <div class="recent-activity-card">
+                        <h4>Latest Contact Messages</h4>
+                        <ul id="latestContactsList" class="recent-activity-list">
+                            <li>No recent messages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Job Applications and Contact Messages sections removed from here -->
+
+        </div>
+    </div>
+
+    <div id="toastMessage" class="toast-message"></div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Firebase SDK (v10+) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script> 
+
+    <!-- Custom Firebase Config -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <!-- Dashboard Script (now just handles Home section and logout) -->
+    <script type="module" src="assets/js/dashboard.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+</body>
+</html>

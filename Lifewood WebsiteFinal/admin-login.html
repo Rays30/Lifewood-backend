@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Lifewood</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="admin-container">
+        <h1 class="headline-01 text-center">Admin Login</h1>
+        <p class="text-center subtitle-example">Access the Lifewood admin dashboard.</p>
+        <form id="adminLoginForm" class="admin-form">
+            <div class="form-group">
+                <label for="username">Username (Email)</label>
+                <input type="email" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+            <div id="adminLoginMessage" class="admin-message"></div>
+        </form>
+    </div>
+
+    <!-- Firebase SDK imports MUST be present for Firebase Authentication -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script> 
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script> 
+
+    <!-- Custom Firebase Config import -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <!-- Admin Login Script will now handle Firebase Auth logic -->
+    <script type="module" src="assets/js/admin-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifewood - Innovative Sustainable Living</title>
+    <meta name="description" content="Lifewood: Innovating sustainable materials and smart designs for eco-friendly urban development and a greener future.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- GLightbox CSS removed as it's replaced by custom modal -->
+</head>
+<body>
+    <div id="progressBar"></div>
+    <div class="nav-overlay"></div>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/lifewood_logo.png" alt="Lifewood Company Logo" class="logo-image header-logo" loading="lazy">
+            </a>
+            <nav class="main-nav">
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    
+                </ul>
+            </nav>
+            <button id="theme-toggle" aria-label="Toggle dark and light mode" class="theme-toggle">
+                <span class="icon-light">☀️</span>
+                <span class="icon-dark">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+<section class="hero-section">
+    <!-- Video Background Container for Hero Section -->
+    <div class="video-background-wrapper">
+        <video autoplay loop muted playsinline class="video-background">
+            <source src="assets/images/index_hero_section.mp4" type="video/mp4">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-data-center-server-room-with-rows-of-racks-33306-large.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="hero-content container" data-aos="fade-up">
+        <h1>Shaping Tomorrow, Sustainably.</h1>
+        <p>Innovating materials and smart designs for a future that's always on, never off. Discover the potential of purposeful technology.</p>
+        <a href="services.html" class="btn btn-primary">Explore Our Solutions</a>
+    </div>
+</section>
+
+        <section class="about-overview container section-spacing">
+            <div class="about-content" data-aos="fade-right">
+                <h2 class="headline-01"> Pioneering Eco-Innovation</h2>
+                <p>At Lifewood, we believe in a harmonious blend of cutting-edge technology and environmental stewardship. Our adaptable approach ensures we deliver transformative solutions that stand the test of time, designed with relentless dedication to quality and a proactive vision for global sustainability.</p>
+                <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+            </div>
+            <div class="about-image" data-aos="fade-left">
+                <!-- GLightbox link removed, no longer needed here -->
+                <img src="assets/images/index_about_image.png" alt="Modern sustainable building design" class="responsive-image" loading="lazy">
+            </div>
+        </section>
+
+        <section class="services-summary section-spacing bg-paper">
+            <div class="container">
+                <h2 class="text-center headline-01" data-aos="fade-up">Our Core Offerings</h2>
+                <p class="text-center subtitle-example" data-aos="fade-up" data-aos-delay="100">We empower progress with a range of specialized services.</p>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="0">
+                        <img src="assets/images/index_service_card1.png" alt="Material Innovation Icon" class="service-icon icon-material" loading="lazy">
+                        <h3>Advanced Material Innovation</h3>
+                        <p>Developing groundbreaking sustainable composites and intelligent building components for superior performance.</p>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="assets/images/index_service_card2.png" alt="Smart Integration Icon" class="service-icon icon-smart" loading="lazy">
+                        <h3>Smart System Integration</h3>
+                        <p>Seamlessly integrating energy-efficient and automated systems for optimal comfort and resource management.</p>
+                    </div>
+                    <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="assets/images/index_service_card3.png" alt="Consulting Icon" class="service-icon icon-consulting" loading="lazy">
+                        <h3>Green Project Consulting</h3>
+                        <p>Providing expert guidance from concept to completion, ensuring every project meets the highest eco-standards.</p>
+                    </div>
+                </div>
+                <div class="text-center" data-aos="fade-up">
+                    <a href="services.html" class="btn btn-primary">View All Services</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Careers CTA Section -->
+        <section class="careers-cta section-spacing bg-paper">
+            <div class="container text-center" data-aos="fade-up">
+                <h2 class="headline-01">Build a Sustainable Career with Lifewood.</h2>
+                <p class="subtitle-example">Join our passionate team and contribute to pioneering eco-friendly technology and sustainable development.</p>
+                <!-- MODIFIED: Changed back to a standard link to services.html#join-our-team -->
+                <a href="services.html#join-our-team" class="btn btn-primary">View Current Opportunities</a>
+            </div>
+        </section>
+
+        <section class="cta-banner section-spacing bg-dark-serpent text-white" data-aos="fade-in">
+            <!-- Video Background Container for CTA Banner -->
+            <div class="video-background-wrapper">
+                <video autoplay loop muted playsinline class="video-background">
+                    <source src="assets/images/index_cta_banner.mp4" type="video/mp4">
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-urban-city-sunset-3096-large.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="container text-center">
+                <h2 class="headline-01">Ready to Build a Smarter Future?</h2>
+                <p class="subtitle-example">Connect with our team to explore how Lifewood can transform your vision into a sustainable reality.</p>
+                <a href="contact.html" class="btn btn-cta">Get In Touch Today</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-col footer-about">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo.svg" alt="Lifewood Company Logo" class="logo-image footer-logo" loading="lazy">
+                </a>
+                <p>Innovating for a sustainable tomorrow, one solution at a time. Always on, never off.</p>
+            </div>
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-contact">
+                <h3>Contact Us</h3>
+                <p><img src="assets/images/address_icon.png" alt="Address icon" class="social-icon" loading="lazy">Location: 88 GreenTech Avenue, Innovation Park, London, EC1A 1AB, UK</p>
+                <p><img src="assets/images/mail_icon.png" alt="Email icon" class="social-icon" loading="lazy"> Email: <a href="mailto:info@lifewood.com">info@lifewood.com</a></p>
+                <p><img src="assets/images/phone_icon.png" alt="Phone icon" class="social-icon" loading="lazy"> Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+            </div>
+            <div class="footer-col footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.lifewood.com/" aria-label="Lifewood Website"><img src="assets/images/web_icon.png" alt="Website Icon" class="social-icon" loading="lazy"></a>
+                    <a href="https://www.youtube.com/@LifewoodDataTechnology/videos" aria-label="YouTube"><img src="assets/images/youtube_icon.png" alt="YouTube Icon" class="social-icon" loading="lazy"></a>
+                    <a href="https://www.linkedin.com/company/lifewood-data-technology-ltd." aria-label="LinkedIn"><img src="assets/images/linkedin_icon.png" alt="LinkedIn Icon" class="social-icon" loading="lazy"></a>
+                    <a href="https://www.facebook.com/LifewoodPH" aria-label="Facebook"><img src="assets/images/fb_icon.png" alt="Facebook Icon" class="social-icon" loading="lazy"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>© <span id="current-year-footer"></span> Lifewood. All rights reserved.</p>
+            <!-- ADDED: Hidden link to Admin Login. Visually invisible but clickable. -->
+            <a href="admin-login.html" id="admin-secret-link" aria-label="Admin Login"></a>
+        </div>
+    </footer>
+
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+        ↑
+    </button>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GLightbox JS removed as it's replaced by custom modal -->
+    <script src="assets/js/script.js"></script>
+    <!-- Firebase SDK (v10+) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+    <!-- Custom Firebase Config -->
+    <script type="module" src="assets/js/firebase-config.js"></script>
+    <script type="module" src="assets/js/utils.js"></script>
+</body>
+</html>

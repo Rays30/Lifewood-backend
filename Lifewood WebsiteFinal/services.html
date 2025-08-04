@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Lifewood</title>
+<meta name="description" content="Lifewood offers comprehensive sustainable solutions including advanced material innovation, smart design, renewable energy integration, and green project consulting.">
+<link rel="stylesheet" href="assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+<div id="progressBar"></div>
+<div class="nav-overlay"></div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay">
+<div class="spinner"></div>
+</div>
+<header class="main-header">
+<div class="container">
+<a href="index.html" class="logo">
+<img src="assets/images/lifewood_logo.png" alt="Lifewood Company Logo" class="logo-image header-logo" loading="lazy">
+</a>
+<nav class="main-nav">
+<button class="nav-toggle" aria-label="Toggle navigation">
+<span></span>
+<span></span>
+<span></span>
+</button>
+<ul class="nav-list">
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About Us</a></li>
+<li><a href="services.html" class="active">Services</a></li>
+<li><a href="project.html">Projects</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</nav>
+<button id="theme-toggle" aria-label="Toggle dark and light mode" class="theme-toggle">
+<span class="icon-light">☀️</span>
+<span class="icon-dark">🌙</span>
+</button>
+</div>
+</header>
+<main>
+    <section class="page-hero services-hero">
+        <!-- Video Background Container for Services Hero Section -->
+        <div class="video-background-wrapper">
+            <video autoplay loop muted playsinline class="video-background">
+                <source src="assets/images/services_hero_section.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-works-on-a-computer-7313-large.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="page-hero-content container" data-aos="fade-up">
+            <h1>Our Comprehensive Solutions.</h1>
+            <p>Driving progress with purpose, our services embody adaptability, innovation, and technological excellence.</p>
+        </div>
+    </section>
+
+    <section class="section-spacing container">
+        <h2 class="text-center headline-01" data-aos="fade-up">Innovating Every Step of the Way</h2>
+        <p class="subtitle-example text-center" data-aos="fade-up" data-aos-delay="100">From concept to completion, we offer a suite of services designed for a sustainable future.</p>
+
+        <div class="service-details-grid">
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="0">
+                <img src="assets/images/service_detail_item1.png" alt="Sustainable Material Icon" class="detail-icon icon-material-detail" loading="lazy">
+                <h3>Sustainable Material Sourcing & Development</h3>
+                <p>We research, develop, and source innovative eco-friendly materials, from advanced bioplastics to high-performance recycled composites. Our focus is on materials that offer superior durability, minimal environmental impact, and energy efficiency, pushing the boundaries of what's possible in green construction.</p>
+            </div>
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/images/service_detail_item2.png" alt="Smart Design Icon" class="detail-icon icon-design-detail" loading="lazy">
+                <h3>Smart & Bioclimatic Design</h3>
+                <p>Our design philosophy integrates smart technologies with bioclimatic principles to create intelligent, energy-efficient, and comfortable spaces. We focus on optimizing natural light, ventilation, and thermal performance, ensuring every design is adaptive to its environment and enhances user well-being.</p>
+            </div>
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/images/service_detail_item3.png" alt="Integrated Build Icon" class="detail-icon icon-build-detail" loading="lazy">
+                <h3>Integrated Project Management & Build</h3>
+                <p>From initial planning to final execution, our integrated project management ensures seamless delivery. We leverage technological tools for efficient scheduling, resource allocation, and quality control, ensuring your sustainable project is completed on time, within budget, and to the highest standards.</p>
+            </div>
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="0">
+                <img src="assets/images/service_detail_item4.png" alt="Energy Optimization Icon" class="detail-icon icon-energy-detail" loading="lazy">
+                <h3>Renewable Energy Integration</h3>
+                <p>We specialize in incorporating renewable energy solutions like solar panels, wind turbines, and geothermal systems into new and existing structures. Our proactive approach ensures your property harnesses the full potential of clean energy, significantly reducing carbon footprint and operational costs.</p>
+            </div>
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/images/service_detail_item5.png" alt="Certification Icon" class="detail-icon icon-cert-detail" loading="lazy">
+                <h3>Sustainability Certification Consulting</h3>
+                <p>Navigating the complexities of green building certifications (e.g., LEED, BREEAM, Green Star) can be challenging. Our experts provide comprehensive consulting, guiding you through every step to achieve desired accreditations, validating your commitment to environmental responsibility.</p>
+            </div>
+            <div class="service-detail-item" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/images/service_detail_item6.png" alt="Data Analytics Icon" class="detail-icon icon-data-detail" loading="lazy">
+                <h3>Performance Monitoring & Optimization</h3>
+                <p>Our commitment extends beyond construction. We offer post-occupancy performance monitoring using advanced data analytics to ensure your building operates at peak efficiency. We identify areas for optimization, ensuring your investment continues to deliver environmental and economic benefits.</p>
+            </div>
+        </div>
+        <div class="text-center section-spacing" id="join-our-team"> <!-- ADDED ID for direct link from homepage -->
+            <h2 class="headline-02">Join Our Team of Innovators</h2>
+            <p class="subtitle-example">Passionate about sustainability and technology? We're looking for talent!</p>
+            <!-- MODIFIED: Changed ID and action to open the Job Board Modal first -->
+            <button id="openJobBoardModalBtn" class="btn btn-primary">Apply Now</button>
+        </div>
+    </section>
+
+    <section class="cta-banner section-spacing">
+        <!-- Video Background Container for CTA Banner -->
+        <div class="video-background-wrapper">
+                <source src="assets/images/service_cta_banner.mp4" type="video/mp4">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-software-developer-works-on-a-computer-7313-large.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="container text-center">
+            <h2 class="headline-01 text-white">Ready to Transform Your Project?</h2>
+            <p class="subtitle-example text-white">Let's discuss how our bespoke solutions can bring your sustainable vision to life.</p>
+            <a href="contact.html" class="btn btn-cta">Schedule a Consultation</a>
+        </div>
+    </section>
+</main>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="footer-col footer-about">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.svg" alt="Lifewood Company Logo" class="logo-image footer-logo" loading="lazy">
+            </a>
+            <p>Innovating for a sustainable tomorrow, one solution at a time. Always on, never off.</p>
+        </div>
+        <div class="footer-col footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="project.html">Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-col footer-contact">
+            <h3>Contact Us</h3>
+            <p><img src="assets/images/address_icon.png" alt="Address icon" class="social-icon" loading="lazy"> 88 GreenTech Avenue, Innovation Park, London, EC1A 1AB, UK</p>
+            <p><img src="assets/images/mail_icon.png" alt="Email icon" class="social-icon" loading="lazy"> Email: <a href="mailto:info@lifewood.com">info@lifewood.com</a></p>
+            <p><img src="assets/images/phone_icon.png" alt="Phone icon" class="social-icon" loading="lazy"> Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+        </div>
+        <div class="footer-col footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://www.lifewood.com/" aria-label="Lifewood Website"><img src="assets/images/web_icon.png" alt="Website Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.youtube.com/@LifewoodDataTechnology/videos" aria-label="YouTube"><img src="assets/images/youtube_icon.png" alt="YouTube Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.linkedin.com/company/lifewood-data-technology-ltd." aria-label="LinkedIn"><img src="assets/images/linkedin_icon.png" alt="LinkedIn Icon" class="social-icon" loading="lazy"></a>
+                <a href="https://www.facebook.com/LifewoodPH" aria-label="Facebook"><img src="assets/images/fb_icon.png" alt="Facebook Icon" class="social-icon" loading="lazy"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <p>© <span id="current-year-footer"></span> Lifewood. All rights reserved.</p>
+        <!-- ADDED: Hidden link to Admin Login. Visually invisible but clickable. -->
+        <a href="admin-login.html" id="admin-secret-link" aria-label="Admin Login"></a>
+    </div>
+</footer>
+
+<button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+    ↑
+</button>
+
+<!-- Job Application Modal Structure -->
+<div id="jobApplicationModal" class="modal-overlay">
+    <div class="modal-content-wrapper job-modal-content">
+        <button class="modal-close-button">×</button>
+        <h3>Job Application</h3>
+        <p>Please fill out the form below to apply for a position with Lifewood. We look forward to reviewing your application!</p>
+        <form id="jobApplicationForm" class="contact-form">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" min="18" required>
+            </div>
+            <div class="form-group">
+                <label for="degree">Highest Degree / Qualification</label>
+                <input type="text" id="degree" name="degree" required>
+            </div>
+            <div class="form-group">
+                <label for="projectApplied">Project/Department Applied For</label>
+                <!-- MODIFIED: Changed to text input with readonly attribute -->
+                <input type="text" id="projectApplied" name="projectApplied" readonly required>
+            </div>
+            <div class="form-group">
+                <label for="experience">Relevant Job Experience (Years)</label>
+                <input type="number" id="experience" name="experience" min="0">
+            </div>
+            <!-- ADDED: Resume link input (as per request to revert from file upload) -->
+            <div class="form-group">
+                <label for="resumeLink">Resume Link (Google Drive, LinkedIn, Portfolio, etc.)</label>
+                <input type="url" id="resumeLink" name="resumeLink" placeholder="e.g., https://linkedin.com/in/yourprofile" required>
+            </div>
+            <div class="form-group">
+                <label for="availableStart">Available From (Time)</label>
+                <input type="time" id="availableStart" name="availableStart" placeholder="ex.8:00 am" required>
+            </div>
+            <div class="form-group">
+                <label for="availableEnd">Available Until (Time)</label>
+                <input type="time" id="availableEnd" name="availableEnd" placeholder="ex.6:00 pm" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Application</button>
+            <button type="button" id="backToJobListingsBtn" class="btn btn-secondary">← Back to Job Listings</button>
+        </form>
+    </div>
+</div>
+
+<!-- NEW: Job Board Modal Structure (Moved from index.html) -->
+<div id="jobBoardModal" class="modal-overlay">
+    <div class="modal-content-wrapper job-board-content">
+        <button class="modal-close-button">×</button>
+        <h3>Current Opportunities at Lifewood</h3>
+        <p>Explore our open positions and join a team dedicated to sustainable innovation.</p>
+        <div id="jobListingsContainer" class="job-listings-grid">
+            <!-- Job cards will be dynamically inserted here by job-modal.js -->
+        </div>
+    </div>
+</div>
+
+<div id="toastMessage" class="toast-message"></div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<!-- Firebase SDK (v10+) -->
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"></script>
+<script type="module" src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"></script> <!-- Firebase Storage is still linked in HTML for other pages but not directly used by job-modal.js anymore -->
+<!-- Custom Firebase Config -->
+<script type="module" src="assets/js/firebase-config.js"></script>
+<!-- Specific Page Scripts -->
+<script src="assets/js/script.js"></script>
+<!-- MODIFIED: job-modal.js now handles both application and job board modals -->
+<script type="module" src="assets/js/job-modal.js"></script>
+<script type="module" src="assets/js/utils.js"></script>
+</body>
+</html>

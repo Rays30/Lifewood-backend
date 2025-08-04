@@ -1,0 +1,36 @@
+# Gitignore for Lifewood WebsiteFinal
+
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Node.js dependencies (if you ever use npm/yarn)
+/node_modules
+
+# Build artifacts (if you ever have a build process)
+/dist
+/build
+
+# Log files
+*.log
+log/
+
+# Environment variables (if you ever use these for *private* API keys)
+.env
+.env.local
+.env.*.local
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.vscode/ # VS Code specific temporary files/settings (optional, but common)
+
+# Firebase specific (DO NOT INCLUDE firebase-config.js here unless it contains truly private server-side keys)
+# Firebase Debug Files
+firebase-debug.log*
+
+# Other files you might want to ignore later
+# /assets/videos/ # If you don't want large videos in Git
+# /assets/images/large-originals/ # If you have very large source images not meant for web
