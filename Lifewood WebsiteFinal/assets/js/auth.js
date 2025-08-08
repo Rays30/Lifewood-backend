@@ -37,9 +37,9 @@ export function checkAdminAuth() {
         }
 
         if (!isAuthenticatedLocally || !isAdminRoleLocally) {
-            console.warn(`Attempted access to ${currentPage} by non-admin/unauthenticated user. Redirecting to index.`);
+            console.warn(`Attempted access to ${currentPage} by non-admin/unauthenticated user. Redirecting to /.`);
             showToast("Access Denied: You must be logged in as an administrator.", "error", 2500);
-            setTimeout(() => { window.location.href = "index"; }, 1000); // Redirect faster
+            setTimeout(() => { window.location.href = "/"; }, 1000); // Redirect faster
             return; // Crucial: Stop further execution of the script for this page
         }
 
@@ -61,18 +61,18 @@ export function checkAdminAuth() {
                     console.warn(`Firebase confirms user (${user.email}) but not admin. Redirecting from ${currentPage}.`);
                     localStorage.removeItem('user'); // Clear incorrect local storage
                     showToast("Access Denied: Your account is not authorized for this page.", "error", 2500);
-                    setTimeout(() => { window.location.href = "index"; }, 1000);
+                    setTimeout(() => { window.location.href = "/"; }, 1000);
                 }
             } else {
                 // No user signed in according to Firebase
                 console.warn(`Firebase confirms no user logged in. Redirecting from ${currentPage}.`);
                 localStorage.removeItem('user'); // Ensure no stale user data
                 showToast("Access Denied: You must be logged in.", "error", 2500);
-                setTimeout(() => { window.location.href = "index"; }, 1000);
+                setTimeout(() => { window.location.href = "/"; }, 1000);
             }
         });
     } else {
-        // For public pages (e.g., index, about, contact, admin-login)
+        // For public pages (e.g., /, about, contact, admin-login)
         // Just ensure localStorage user data is in sync with Firebase state if a user is logged in.
         onAuthStateChanged(auth, (user) => {
             if (user) {
