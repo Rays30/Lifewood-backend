@@ -166,6 +166,6 @@ jobApplicationForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Initial call to fetch jobs when the script loads (for direct access to services.html#join-our-team)
+// Initial call to fetch jobs when the script loads (for direct access to services#join-our-team)
 // This is now handled by the window.onload and openJobBoardModalBtn click listeners
 // fetchAndDisplayJobs(); // Removed this as it was causing a double fetch or fetch on every page load

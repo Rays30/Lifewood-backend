@@ -256,7 +256,7 @@ export const acceptedApplicantEmailTemplate = `
                     We received a large number of applications from highly qualified candidates for this role, making the selection process very competitive. While your background is impressive, we have decided to move forward with other candidates whose profiles were a closer match for the specific requirements of this particular position at this time.
                 </p>
                 <p style="color: #133020; font-size: 16px; line-height: 1.7; margin-bottom: 25px;">
-                    We understand that this news may be disappointing, and we sincerely thank you for your understanding. We encourage you to keep an eye on our <a href="https://www.lifewood.com/services.html#join-our-team" style="color: #FFB347; text-decoration: none; font-weight: 500;">careers page</a> for future opportunities that may better align with your skills and experience.
+                    We understand that this news may be disappointing, and we sincerely thank you for your understanding. We encourage you to keep an eye on our <a href="https://www.lifewood.com/services#join-our-team" style="color: #FFB347; text-decoration: none; font-weight: 500;">careers page</a> for future opportunities that may better align with your skills and experience.
                 </p>
                 <p style="color: #133020; font-size: 16px; line-height: 1.7; margin-bottom: 0;">
                     We wish you the very best in your job search and all your future endeavors.

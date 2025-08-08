@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (adminSecretLink) {
         adminSecretLink.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = 'admin-login.html';
+            window.location.href = 'admin-login';
         });
     }
 

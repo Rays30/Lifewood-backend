@@ -43,7 +43,7 @@ let allApplicants = []; // Store all applicants for local filtering
 // --- Authentication Check ---
 onAuthStateChanged(auth, (user) => {
     if (!user) {
-        window.location.href = 'admin-login.html';
+        window.location.href = 'admin-login';
     } else {
         hideLoadingOverlay();
         fetchAndDisplayApplicants();
@@ -58,7 +58,7 @@ if (logoutButton) {
             showToast('Logged out successfully.', 'info'); // Changed to 'info' as it's not an error/success of an operation on data
             // Add a slight delay to allow the toast message to be seen
             setTimeout(() => {
-                window.location.href = 'admin-login.html';
+                window.location.href = 'admin-login';
             }, 1000); // 1-second delay
         } catch (error) {
             console.error('Logout error:', error);

@@ -56,7 +56,7 @@ let currentMessageId = null; // To store the ID of the message being replied to
 onAuthStateChanged(auth, (user) => {
     if (!user) {
         // User is signed out, redirect to login
-        window.location.href = 'admin-login.html';
+        window.location.href = 'admin-login';
     } else {
         // User is signed in, load messages
         console.log('Admin user logged in:', user.email);
@@ -72,7 +72,7 @@ if (logoutButton) {
             showToast('Logged out successfully.', 'info'); // Changed to 'info' as it's not an error/success of an operation on data
             // Add a slight delay to allow the toast message to be seen
             setTimeout(() => {
-                window.location.href = 'admin-login.html';
+                window.location.href = 'admin-login';
             }, 1000); // 1-second delay
         } catch (error) {
             console.error('Logout error:', error);
