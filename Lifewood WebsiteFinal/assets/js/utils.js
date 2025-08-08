@@ -484,4 +484,21 @@ export function toggleLoadingOverlay(show) {
     }
 }
 
+export function showToast(message, type = 'info', duration = 3000) {
+    const toast = document.getElementById('toastMessage');
+    if (!toast) {
+        console.error("Toast message element not found!");
+        return;
+    }
+
+    toast.textContent = message;
+    toast.className = `toast-message show ${type}`; // Apply type class for styling
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.className = 'toast-message'; // Reset classes
+    }, duration);
+}
+
+
 // You can add other utility functions here if needed.

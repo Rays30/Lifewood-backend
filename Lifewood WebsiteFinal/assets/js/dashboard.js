@@ -31,16 +31,22 @@ onAuthStateChanged(auth, (user) => {
 });
 
 // --- Logout Functionality ---
-logoutButton.addEventListener('click', async () => {
-    try {
-        await signOut(auth);
-        showToast('Logged out successfully.', 'success');
-        window.location.href = 'admin-login.html';
-    } catch (error) {
-        console.error('Logout error:', error);
-        showToast('Failed to log out.', 'error');
-    }
-});
+if (logoutButton) {
+    logoutButton.addEventListener('click', async () => {
+        try {
+            await signOut(auth);
+            localStorage.removeItem('user'); // <-- **ADD THIS LINE**
+            showToast('Logged out successfully.', 'info'); // Changed to 'info' as it's not an error/success of an operation on data
+            // Add a slight delay to allow the toast message to be seen
+            setTimeout(() => {
+                window.location.href = 'admin-login.html';
+            }, 1000); // 1-second delay
+        } catch (error) {
+            console.error('Logout error:', error);
+            showToast('Failed to log out: ' + error.message, 'error'); // Include error message for debugging
+        }
+    });
+}
 
 // --- Load All Dashboard Data ---
 async function loadDashboardData() {
@@ -364,4 +370,5 @@ async function loadRecentActivity() {
             latestContactsList.appendChild(li);
         });
     }
+    
 }
