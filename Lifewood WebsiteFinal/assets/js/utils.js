@@ -33,20 +33,6 @@ export function hideLoadingOverlay() {
  * @param {string} [type='info'] - The type of toast (e.g., 'success', 'error', 'warning', 'info').
  * @param {number} [duration=3000] - How long the toast should be visible in milliseconds.
  */
-export function showToast(message, type = 'info', duration = 3000) {
-    const toastMessage = document.getElementById('toastMessage');
-    if (toastMessage) {
-        // Clear previous classes except 'toast-message' and add new ones
-        toastMessage.className = 'toast-message'; 
-        toastMessage.textContent = message;
-        toastMessage.classList.add('show', type);
-        
-        // Hide after duration
-        setTimeout(() => {
-            toastMessage.classList.remove('show');
-        }, duration);
-    }
-}
 
 /**
  * Function to format Firestore Timestamps to a readable string.
