@@ -10,7 +10,7 @@
     { "source": "/project", "destination": "/project.html" },
     { "source": "/contact", "destination": "/contact.html" },
     
-    { "source": "/super-secret-admin-portal-2024", "destination": "/super-secret-admin-portal-2024.html" },
+    { "source": "/admin-login", "destination": "/super-secret-admin-portal-2024.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/jobapplicants", "destination": "/jobapplicants.html" },
     { "source": "/managejobs", "destination": "/managejobs.html" },
