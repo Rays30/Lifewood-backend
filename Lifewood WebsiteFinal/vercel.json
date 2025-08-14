@@ -1,9 +1,8 @@
 {
   "version": 2,
   "redirects": [
-    { "source": "/admin-login", "destination": "/", "permanent": true },
-    { "source": "/admin-login.html", "destination": "/", "permanent": true }
-  ],
+  { "source": "/admin-login.html", "destination": "/", "permanent": true }
+],
   "rewrites": [
     { "source": "/about", "destination": "/about.html" },
     { "source": "/services", "destination": "/services.html" },
